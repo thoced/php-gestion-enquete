@@ -24,7 +24,6 @@ if(isset($_GET['target_link']))
                 $logModel = new LoginModel($login, $passwd);
                 $logModel->isLoged = true;
                 $logModel->idUser = $idUser;
-                echo "id user: " . $idUser; 
                 // on place le tout dans la session
                // session_name("GESTION_ENQUETE_SESSION");
                 $_SESSION['LOGIN'] = $logModel;
