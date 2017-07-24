@@ -18,14 +18,17 @@ if(isset($_GET['target_link']))
             $passwd = $_POST['passwd'];
             // verification
             $db = DbConnect::getInstance();
-            if($db->checkLogin($login,$passwd)){
+            $idUser = $db->checkLogin($login,$passwd);
+            if($idUser !== false){
                 // le login est ok
                 $logModel = new LoginModel($login, $passwd);
                 $logModel->isLoged = true;
+                $logModel->idUser = $idUser;
+                echo "id user: " . $idUser; 
                 // on place le tout dans la session
+               // session_name("GESTION_ENQUETE_SESSION");
                 $_SESSION['LOGIN'] = $logModel;
-              
-                
+
                 // appel au FrondEnd
                 require './App/FrontEnd.php';
                 die;

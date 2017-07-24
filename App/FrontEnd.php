@@ -17,17 +17,24 @@ if(isset($_GET['target_link'])){
         
         case 'CHECKLOGIN':
             break;
+        
+        case 'VIEWDOSSIERS': echo "view dossiers";
+            break;
     }
     
 }
 
 // vérification si l'utilisateur est logué
-session_name("GESTION_ENQUETE_SESSION");
+//session_name("GESTION_ENQUETE_SESSION");
+if(!isset($_SESSION))
+    session_start();
+
 if(isset($_SESSION['LOGIN'])){
     $login = $_SESSION['LOGIN'];
 }
 else // pas d'objet dans la sessin login : appel de loginctrl
 {
+    echo "pas d'objet";
     require './App/Login/LoginCtrl.php';
     die;
   
@@ -40,4 +47,4 @@ if(!$login->isLoged)
 }
 
 // le systeme à passé toutes les vérifications, on lance l'application
-
+require './App/Main/MainCtrl.php';

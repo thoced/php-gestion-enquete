@@ -23,6 +23,8 @@ class LoginModel
    
    public $passwd;
    
+   public $idUser;
+   
     
    public function __construct($login,$passwd) 
    {

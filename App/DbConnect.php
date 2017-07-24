@@ -47,14 +47,14 @@ class DbConnect
                'passwd' => $passwd
            ));
            
-           if($req->fetch())
+           $ret = $req->fetch();
+           if(isset($ret))
            {
-              return true; // connection acceptée
+              return $ret['id'];
            }
            else
            {
-               echo "false";
-              return false; // connection refusée
+               return false;
            }
        }
     }
