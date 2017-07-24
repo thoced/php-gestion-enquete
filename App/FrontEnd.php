@@ -18,7 +18,9 @@ if(isset($_GET['target_link'])){
         case 'CHECKLOGIN':
             break;
         
-        case 'VIEWDOSSIERS': echo "view dossiers";
+        case 'VIEWDOSSIERS': 
+            require './App/Folder/FolderCtrl.php';
+            die;
             break;
     }
     
