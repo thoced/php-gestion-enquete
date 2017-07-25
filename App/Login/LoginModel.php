@@ -25,6 +25,8 @@ class LoginModel
    
    public $idUser;
    
+   public $nom;
+   
     
    public function __construct($login,$passwd) 
    {

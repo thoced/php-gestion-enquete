@@ -6,4 +6,10 @@
  * and open the template in the editor.
  */
 
+
+
+// récupération d'information du login
+if(isset($_SESSION['LOGIN']))
+    $login = $_SESSION['LOGIN'];
+
 require 'MainView.php';
