@@ -35,7 +35,7 @@ class FolderModel extends BaseModel
         while($row = $req->fetch())
         {
             $folder = new Folder();
-            $folder->id = $row['id'];
+            $folder->id = $row[0];
             $folder->nom = $row['nom'];
             $folder->commentaire = $row['commentaire'];
             $folder->owner = $row['owner'];

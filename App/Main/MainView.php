@@ -18,7 +18,6 @@
   background-color: #9999ff;
   border-radius: 0px;
   font-weight: bold;
-  text-decoration: underline;
   border-top-style: solid;
   border-right-style: solid;
   border-bottom-style: solid;
@@ -38,10 +37,12 @@
     <p id="Title">Gestion Enquête Locale</p>
     <p><a href="?target_link=LOGOUT">Logout</a></p>
     <div id="login">Utilisateur :
-      <?php echo $login->login;?> <br>
+      <?php echo $user;?> <br> Dossier en cours: 
+      <?php echo $folder;?>
     </div>
     <p><a href="?target_link=LOGOUT"></a><br>
     </p>
+    <br>
     <table style="width: 100%" border="1">
       <tbody>
         <tr>

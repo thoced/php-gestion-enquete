@@ -11,22 +11,26 @@ $login = $_SESSION['LOGIN'];
 // reception de la liste des folders
 $folderModel = new FolderModel();
 $listFolders = $folderModel->getFolders($login);
-
 // code de sélection
+
 if(isset($_GET['IDSELECT']))
 {
     $idselect = $_GET['IDSELECT'];
     if(is_numeric($idselect))
     {
         if(isset($_SESSION['SETTING'])){
-             $setting = $_SESSION['SETTING'];
-             $setting->idFolderSelected = $idselect;
+              
+             $setting = new SettingModel();
+             $setting->unserialize($_SESSION['SETTING']);
+             $setting->setIdFolderSelected($idselect);
+             $_SESSION['SETTING'] = $setting->serialize();
         }
         else
         {
+              
             $setting = new SettingModel();
-            $setting->idFolderSelected = $idselect;
-            $_SESSION['SETTING'] = $setting;
+            $setting->setIdFolderSelected($idselect);
+            $_SESSION['SETTING'] = $setting->serialize();
         }
      
     }

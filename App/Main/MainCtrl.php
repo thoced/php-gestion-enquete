@@ -5,11 +5,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once './App/Setting/SettingModel.php';
 
-
+$user = '';
+$folder = 'Aucun dossier sélectionné';
 
 // récupération d'information du login
-if(isset($_SESSION['LOGIN']))
+ if(!isset($_SESSION))
+        session_start();
+
+if(isset($_SESSION['LOGIN'])){
     $login = $_SESSION['LOGIN'];
+    $user = $login->login;
+}
+// récupération du setting
+if(isset($_SESSION['SETTING'])){
+    
+    $setting = new SettingModel();
+    $setting->unserialize($_SESSION['SETTING']);
+    $folder = $setting->getNomFolderSelected();
+}
+
+
 
 require 'MainView.php';
