@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 require_once './App/Setting/SettingModel.php';
+require_once './App/Login/LoginModel.php';
 
 $user = '';
 $folder = 'Aucun dossier sélectionné';
@@ -14,8 +15,10 @@ $folder = 'Aucun dossier sélectionné';
  if(!isset($_SESSION))
         session_start();
 
-if(isset($_SESSION['LOGIN'])){
-    $login = $_SESSION['LOGIN'];
+if(isset($_SESSION['LOGIN']))
+    {
+    $login = new LoginModel('','');
+    $login->unserialize($_SESSION['LOGIN']);
     $user = $login->login;
 }
 // récupération du setting

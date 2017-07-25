@@ -14,7 +14,7 @@
 
 
 
-class LoginModel 
+class LoginModel implements Serializable
 {
       
    public $isLoged = false;
@@ -34,8 +34,19 @@ class LoginModel
       $this->passwd = $passwd;
        
    }
-   
-  
-   
-   
+      
+    public function serialize() {
+        return serialize(array('isLoged' => $this->isLoged, 'login' => $this->login, 'passwd' => $this->passwd, 'idUser' => $this->idUser, 'nom' => $this->nom));
+    }
+
+    public function unserialize( $serialized) {
+        $a = array();
+        $a = unserialize($serialized);
+        $this->isLoged = $a['isLoged'];
+        $this->login = $a['login'];
+        $this->passwd = $a['passwd'];
+        $this->idUser = $a['idUser'];
+        $this->nom = $a['nom'];
+    }
+
 }

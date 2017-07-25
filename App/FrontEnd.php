@@ -7,13 +7,15 @@
  */
 require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
+require_once './App/Personne/PersonneCtrl.php';
+require_once './App/Setting/SettingModel.php';
 
 
 if(!isset($_SESSION))
     session_start();
 
 // code de vérification relatif au login
-if(!isset($_SESSION['LOGIN']) || $login = $_SESSION['LOGIN']->isLoged == false)
+if(!isset($_SESSION['LOGIN']))
 {
     // l'utilisateur n'est pas logué
     // verification target_link
@@ -37,9 +39,16 @@ if(!isset($_SESSION['LOGIN']) || $login = $_SESSION['LOGIN']->isLoged == false)
 
 // un login est présent
 
-if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']->isLoged)
+if(isset($_SESSION['LOGIN']))
  {
-    $login = $_SESSION['LOGIN'];
+    $login = new LoginModel('','');
+    $login->unserialize($_SESSION['LOGIN']);
+    
+    $setting = new SettingModel();
+    if(isset($_SESSION['SETTING'])){
+    $setting->unserialize($_SESSION['SETTING']);
+    }
+   
     // reception de la valeur pour le dispatch
     if(isset($_GET['target_link'])){
         $target = $_GET['target_link'];
@@ -54,7 +63,7 @@ if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']->isLoged)
                         die;
                         break;
                     
-      case 'VIEWPERSONNES': require './App/Personne/PersonneView.php';
+      case 'VIEWPERSONNES': $pCtrl = new PersonneCtrl($setting);
                         die;
                         break;
 
@@ -93,7 +102,7 @@ if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']->isLoged)
                         if(!isset($_SESSION))
                             session_start();
 
-                        $_SESSION['LOGIN'] = $logModel;
+                        $_SESSION['LOGIN'] = $logModel->serialize();
 
                         // appel au FrondEnd
                       

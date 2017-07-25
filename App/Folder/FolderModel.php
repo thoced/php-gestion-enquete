@@ -22,8 +22,7 @@ class FolderModel extends BaseModel
 
     public function getFolders($login){
         
-              
-        
+
         $req = $this->db->_dbb->prepare("select * from t_folders inner join t_link_group_folders on t_folders.id = t_link_group_folders.ref_id_folders "
                     . "where t_link_group_folders.ref_id_group like ("
                     . "select DISTINCT t_group.id from t_group inner join t_link_group_users on t_group.id = t_link_group_users.ref_id_group "

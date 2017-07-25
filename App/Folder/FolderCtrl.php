@@ -7,7 +7,9 @@ require_once './App/Setting/SettingModel.php';
 if(!isset($_SESSION))
     session_start();
 
-$login = $_SESSION['LOGIN'];
+$login = new LoginModel('','');
+$login->unserialize($_SESSION['LOGIN']);
+
 // reception de la liste des folders
 $folderModel = new FolderModel();
 $listFolders = $folderModel->getFolders($login);
