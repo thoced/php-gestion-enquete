@@ -47,15 +47,13 @@ class DbConnect
                'passwd' => $passwd
            ));
            
-           $ret = $req->fetch();
-           if(isset($ret))
+           while($ret = $req->fetch())
            {
-              return $ret['id'];
+               return $ret['id'];
            }
-           else
-           {
+          
                return false;
-           }
+           
        }
     }
 }

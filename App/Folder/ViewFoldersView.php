@@ -6,9 +6,13 @@
  * and open the template in the editor.
  */
 
-echo "view folders view";
+
+foreach($listFolders as $folder)
+{
+    echo $folder->nom . "<br>";
+}
 
 ?>
 
-<a href="?target_link=" >Retour</a>
+<a href="?target_link=MAINVIEW" >Retour</a>
 

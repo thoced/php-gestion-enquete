@@ -7,16 +7,19 @@
  */
 
 /**
- * Description of BaseModel
+ * Description of Folder
  *
  * @author Thonon
  */
-class BaseModel 
+class Folder 
 {
-   public $db;
-   
-   public function __construct() {
-       
-       $this->db = DbConnect::getInstance();
-   }
+    public $id;
+    
+    public $nom;
+    
+    public $commentaire;
+    
+    public $owner;
+    
+    public $visible;
 }

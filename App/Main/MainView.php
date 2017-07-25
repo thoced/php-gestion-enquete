@@ -13,12 +13,13 @@
 </style></head>
   <body>
     <p id="Title">Gestion Enquête Locale</p>
-    <p><br>
+    <p><a href="?target_link=LOGOUT">Logout</a><br>
     </p>
     <table style="width: 100%" border="1">
       <tbody>
         <tr>
           <td style="width: 153.967px;">Gestion des Dossiers<br>
+            <br>
             <a href="?target_link=VIEWDOSSIERS">Voir les dossiers</a></td>
           <td style="width: 739.35px;"><br>
           </td>
