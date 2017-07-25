@@ -12,11 +12,11 @@
 $( "#datepicker" ).datepicker({
     altField: "#datepicker",
     closeText: 'Fermer',
-    prevText: 'Précédent',
+    prevText: 'Prï¿½cï¿½dent',
     nextText: 'Suivant',
     currentText: 'Aujourd\'hui',
-    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    monthNames: ['Janvier', 'Fï¿½vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aoï¿½t', 'Septembre', 'Octobre', 'Novembre', 'Dï¿½cembre'],
+    monthNamesShort: ['Janv.', 'Fï¿½vr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Aoï¿½t', 'Sept.', 'Oct.', 'Nov.', 'Dï¿½c.'],
     dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
     dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
     dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
@@ -30,6 +30,20 @@ $( "#datepicker" ).datepicker({
  
   <body>&nbsp; <br>
     <br>
+    <br>
+    <table width="100%">
+    <?php
+        while($row = $req->fetch()){
+       echo "<tr>"
+    . "<td>" . $row['nom'] . '</td>'
+               . '<td>' . $row['prenom'] . '</td>'
+               . '<td>' . $row['adresse'] . '</td>'
+               . '<td>' . $row['date_naissance'] . '</td>'
+               . '<td>' . $row['qualite'] . '</td>'
+               . '<td>' . '<a href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>';
+        }
+    ?>
+    </table>
     <br>
     <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne">
       <table style="width: 100%;" border="0">

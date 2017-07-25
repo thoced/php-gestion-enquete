@@ -17,11 +17,14 @@ class PersonneCtrl
     
     private function run()
     {
+        
+        
+        
         // reception des Personnes
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('select * from t_personne where ref_id_folders = :refFolder');
         $req->execute(array('refFolder' => $this->setting->getIdFolderSelected()));
-        
+               
         // appel à la vue
         require './App/Personne/PersonneView.php';
     }
