@@ -53,6 +53,10 @@ if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']->isLoged)
                         require './App/Folder/FolderCtrl.php';
                         die;
                         break;
+                    
+      case 'VIEWPERSONNES': require './App/Personne/PersonneView.php';
+                        die;
+                        break;
 
       case 'LOGOUT':
                         session_destroy();
