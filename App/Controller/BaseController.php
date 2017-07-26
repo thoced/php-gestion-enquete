@@ -13,15 +13,20 @@
  */
 abstract class BaseController 
 {
-    abstract public function run($setting,$action,$id,$update);
+    abstract public function run($login, $setting,$action,$id,$update);
     
     public function __construct() 
     {
         // pompe à récupération d'information
+        $login = new LoginModel("", "");
         $setting = new SettingModel();
         $action = null;
         $id = null;
         $update = array();
+        
+        if(isset($_SESSION['LOGIN'])){
+            $login->unserialize($_SESSION['LOGIN']);
+        }
         
         if(isset($_SESSION['SETTING'])){
             $setting->unserialize($_SESSION['SETTING']);
@@ -40,6 +45,6 @@ abstract class BaseController
         }
         
         // appel au methode run des enfants
-        $this->run($setting,$action,$id,$update);
+        $this->run($login,$setting,$action,$id,$update);
     }
 }
