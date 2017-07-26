@@ -17,7 +17,7 @@ require_once './App/Setting/SettingModel.php';
 class PersonneCtrl extends BaseController
 {
     
-    public function run($setting,$action,$id,$update)
+    public function run($login,$setting,$action,$id,$update)
     {
  
         switch($action)
