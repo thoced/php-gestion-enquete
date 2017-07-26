@@ -8,6 +8,7 @@
 require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
 require_once './App/Personne/PersonneCtrl.php';
+require_once './App/Folder/FolderCtrl.php';
 require_once './App/Setting/SettingModel.php';
 
 
@@ -59,8 +60,7 @@ if(isset($_SESSION['LOGIN']))
       {
         
       case 'VIEWDOSSIERS': 
-                        require './App/Folder/FolderCtrl.php';
-                        die;
+                        new FolderCtrl();
                         break;
                     
       case 'VIEWPERSONNES':  new PersonneCtrl();
