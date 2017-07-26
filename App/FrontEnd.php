@@ -9,6 +9,7 @@ require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
 require_once './App/Personne/PersonneCtrl.php';
 require_once './App/Folder/FolderCtrl.php';
+require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
 
 
@@ -26,7 +27,7 @@ if(!isset($_SESSION['LOGIN']))
         switch($target)
         {
             case 'CHECKLOGIN':if(IsLoged()){
-                require './App/Main/MainCtrl.php';
+                new MainCtrl();
                 die;
                 break;
             }
@@ -73,7 +74,7 @@ if(isset($_SESSION['LOGIN']))
                         break;
                     
       case 'MAINVIEW':  
-      default:          require './App/Main/MainCtrl.php';
+      default:          new MainCtrl();
                         die;
                         break;
                     
