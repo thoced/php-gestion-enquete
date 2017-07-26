@@ -1,4 +1,11 @@
-<table>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <link rel="stylesheet" href="./Style/.AppCss.css">
+  </head>
+  <body>
+<div class="list">
+<table width=90%" align="center">
     <tr>
         <td>Num</td>
         <td>Nom</td>
@@ -16,5 +23,7 @@
     }
 ?>
 </table>
+</div>
 <br>
 <a href="?target_link=MAINVIEW">Retour</a>
+  </body>
