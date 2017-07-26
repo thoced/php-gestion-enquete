@@ -21,7 +21,7 @@ class PersonneCtrl extends BaseController
  
         switch($action)
         {
-            case 'DELETE':echo "DELETE";$this->deletePerson($setting, $id);
+            case 'DELETE':$this->deletePerson($setting, $id);
                           break;
             
             default:$this->showPerson($setting);
