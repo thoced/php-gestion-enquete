@@ -25,42 +25,80 @@ $( "#datepicker" ).datepicker({
     firstDay : 1
     });
 });
+
+function go(tr,id){
+    
+    // tr : contient la ligne complète selectionné
+    var listTd = tr.childNodes;
+    // récupératin des td
+   
+        // ajout du contenu des td dans les inputs
+        var nom = document.createAttribute("value");
+        nom.value = listTd[0].innerHTML;
+        inputNom = document.getElementById("nom");
+        inputNom.setAttributeNode(nom);
+        
+        var prenom = document.createAttribute("value");
+        prenom.value = listTd[1].innerHTML;
+        inputPrenom = document.getElementById("prenom");
+        inputPrenom.setAttributeNode(prenom);
+        
+        var adresse = document.createAttribute("value");
+        adresse.value = listTd[2].innerHTML;
+        inputAdresse = document.getElementById("adresse");
+        inputAdresse.setAttributeNode(adresse);
+        
+        var date_naissance = document.createAttribute("value");
+        date_naissance.value = listTd[3].innerHTML;
+        inputDate = document.getElementById("datepicker");
+        inputDate.setAttributeNode(date_naissance);
+        
+         inputQualite = document.getElementById("qualite");
+         for(i=0;i<inputQualite.options.length;i++){
+             if(inputQualite.options[i].text === listTd[4].innerText)
+                 inputQualite.options[i].selected = true;
+        }
+
+}
     </script>
   </head>
  
   <body>&nbsp; <br>
     <br>
     <br>
+   
     <table width="100%">
+        
     <?php
         while($row = $req->fetch()){
-       echo "<tr>"
+       echo "<tr onclick='go(this," . $row['id']. ");'>"
     . "<td>" . $row['nom'] . '</td>'
                . '<td>' . $row['prenom'] . '</td>'
                . '<td>' . $row['adresse'] . '</td>'
                . '<td>' . $row['date_naissance'] . '</td>'
                . '<td>' . $row['qualite'] . '</td>'
-               . '<td>' . '<a href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>';
+               . '<td>' . '<a href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>'
+               . '</tr>';
         }
     ?>
     </table>
+   
     <br>
     <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne">
       <table style="width: 100%;" border="0">
         <tbody>
           <tr>
             <td>Nom</td>
-            <td><input maxlength="32" size="32" name="nom" type="text"><br>
+            <td><input maxlength="32" size="32" name="nom" type="text" id="nom"><br>
             </td>
           </tr>
           <tr>
             <td>Prenom</td>
-            <td><input maxlength="32" size="32" name="prenom" type="text"></td>
+            <td><input maxlength="32" size="32" name="prenom" type="text" id="prenom"></td>
           </tr>
           <tr>
             <td style="width: 133.683px;">Adresse</td>
-            <td style="width: 495.317px;"><input maxlength="128" size="128" name="adresse"
-
+            <td style="width: 495.317px;"><input maxlength="128" size="128" name="adresse" id="adresse"
                 type="text"><br>
             </td>
           </tr>
@@ -74,7 +112,7 @@ $( "#datepicker" ).datepicker({
           <tr>
             <td>Qualite</td>
             <td>
-              <select name="qualite">
+              <select name="qualite" id="qualite">
                 <option value="Suspect">Suspect</option>
                 <option value="Victime">Victime</option>
                 <option value="Temoin">Temoin</option>
