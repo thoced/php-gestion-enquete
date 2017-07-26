@@ -21,8 +21,10 @@ $( "#datepicker" ).datepicker({
     dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
     dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
     weekHeader: 'Sem.',
-    dateFormat: 'dd-mm-yy',
-    firstDay : 1
+    dateFormat: 'yy-mm-dd',
+    firstDay : 1,
+    changeYear: true,
+    yearRange:'-90:+0'
     });
 });
 
@@ -58,6 +60,10 @@ function go(tr,id){
              if(inputQualite.options[i].text === listTd[4].innerText)
                  inputQualite.options[i].selected = true;
         }
+        
+        // changement d'action pour le form
+        document.getElementById("form_personne").setAttribute("action","?target_link=VIEWPERSONNES&action=UPDATE&id=" + id);
+      
 
 }
     </script>
@@ -84,7 +90,7 @@ function go(tr,id){
     </table>
    
     <br>
-    <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne">
+    <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne" id="form_personne">
       <table style="width: 100%;" border="0">
         <tbody>
           <tr>
@@ -120,6 +126,11 @@ function go(tr,id){
               </select>
               <br>
             </td>
+          </tr>
+          <tr>
+              <td><input type="submit" value="Modifier"></td>
+              <td><input type="submit" value="Ajouter" onclick="document.getElementById('form_personne').setAttribute('action','?target_link=VIEWPERSONNES&action=INSERT');"></td>
+              
           </tr>
         </tbody>
       </table>
