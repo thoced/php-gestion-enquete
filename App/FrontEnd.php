@@ -63,7 +63,7 @@ if(isset($_SESSION['LOGIN']))
                         die;
                         break;
                     
-      case 'VIEWPERSONNES': $pCtrl = new PersonneCtrl($setting);
+      case 'VIEWPERSONNES': $pCtrl = new PersonneCtrl();
                         die;
                         break;
 
