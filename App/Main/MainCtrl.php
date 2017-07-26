@@ -1,34 +1,42 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once './App/Setting/SettingModel.php';
-require_once './App/Login/LoginModel.php';
 
-$user = '';
-$folder = 'Aucun dossier sélectionné';
+/**
+ * Description of MainCtrl
+ *
+ * @author Thonon
+ */
+require_once './App/Controller/BaseController.php';
 
-// récupération d'information du login
- if(!isset($_SESSION))
-        session_start();
+class MainCtrl extends BaseController{
+    //put your code here
+    public function run($login, $setting, $action, $id, $update) {
+        
+        switch($action)
+        {
+            default:$this->showMainView($login,$setting);
+                break;
+        }
+    }
 
-if(isset($_SESSION['LOGIN']))
-    {
-    $login = new LoginModel('','');
-    $login->unserialize($_SESSION['LOGIN']);
-    $user = $login->login;
+    private function showMainView($login,$setting){
+        $user = "";
+        $folder = "Aucun dossier sélectionné";
+        if(isset($login))
+            $user = $login->login;
+        if(isset($setting))
+            $folder = $setting->getNomFolderSelected();
+        
+        require './App/Main/MainView.php';
+    }
+          
+    public function __construct() {
+        parent::__construct();
+    }
+
 }
-// récupération du setting
-if(isset($_SESSION['SETTING'])){
-    
-    $setting = new SettingModel();
-    $setting->unserialize($_SESSION['SETTING']);
-    $folder = $setting->getNomFolderSelected();
-}
-
-
-
-require 'MainView.php';
