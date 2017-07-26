@@ -12,22 +12,43 @@
  * @author Thonon
  */
 require_once './App/Controller/BaseController.php';
+require_once './App/Setting/SettingModel.php';
 
 class PersonneCtrl extends BaseController
 {
     
-    public function run($setting,$action,$id)
+    public function run($setting,$action,$id,$update)
     {
  
         switch($action)
         {
             case 'DELETE':$this->deletePerson($setting, $id);
                           break;
+                      
+            case 'UPDATE':$this->updatePerson($setting, $id, $update);
+                          break;
+                      
+            case 'INSERT':$this->insertPerson($setting, $update);
+                          break;
             
             default:$this->showPerson($setting);
                     break;
         }
 
+    }
+    
+    private function updatePerson($setting,$id,$update)
+    {
+       
+        
+        if(is_numeric($id)){
+            $db = DbConnect::getInstance();
+            $req = $db->_dbb->prepare('update t_personne set nom = :nom,prenom = :prenom,adresse = :adresse, date_naissance = :date_naissance, qualite = :qualite '
+                    . 'where id = :id');
+            $req->execute(array('nom' =>$update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $update['date_naissance'], 'qualite' => $update['qualite'],'id' => $id));
+        }
+        
+        $this->showPerson($setting);
     }
     
     private function deletePerson($setting,$id)
@@ -41,6 +62,21 @@ class PersonneCtrl extends BaseController
         }
         
         $this->showPerson($setting);
+    }
+    
+    private function insertPerson($setting,$update)
+    {
+        
+            if(isset($update)){
+            $db = DbConnect::getInstance();
+            $req = $db->_dbb->prepare('insert into t_personne (nom,prenom,adresse,date_naissance,qualite,ref_id_folders) values (:nom,:prenom,:adresse,:date_naissance,:qualite,:ref_id_folders)');
+            $ret = $req->execute(array('nom' => $update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $update['date_naissance'], 'qualite' => $update['qualite'],'ref_id_folders' => $setting->getIdFolderSelected()));
+            }
+
+            $this->showPerson($setting);
+      
+        
+       
     }
     
     private function showPerson($setting)
