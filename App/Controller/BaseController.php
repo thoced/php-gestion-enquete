@@ -13,7 +13,7 @@
  */
 abstract class BaseController 
 {
-    abstract public function run($setting,$action,$id);
+    abstract public function run($setting,$action,$id,$update);
     
     public function __construct() 
     {
@@ -21,6 +21,7 @@ abstract class BaseController
         $setting = new SettingModel();
         $action = null;
         $id = null;
+        $update = array();
         
         if(isset($_SESSION['SETTING'])){
             $setting->unserialize($_SESSION['SETTING']);
@@ -34,7 +35,11 @@ abstract class BaseController
             $id = $_GET['id'];
         }
         
+        if(isset($_POST)){
+            $update = $_POST;
+        }
+        
         // appel au methode run des enfants
-        $this->run($setting,$action,$id);
+        $this->run($setting,$action,$id,$update);
     }
 }
