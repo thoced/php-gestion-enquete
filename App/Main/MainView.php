@@ -2,37 +2,9 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" href="./Style/.AppCss.css"> 
     <title>MainView.php</title>
-    <style type="text/css">
-#Title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-#login {
-  display: block;
-  float: right;
-  clear: right;
-  position: static;
-  background-color: #9999ff;
-  border-radius: 0px;
-  font-weight: bold;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-top-width: 2px;
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-  border-top-color: #ccccff;
-  border-right-color: #ccccff;
-  border-bottom-color: #ccccff;
-  border-left-color: #ccccff;
-}
-
-</style></head>
+</head>
   <body>
     <p id="Title">Gestion Enquête Locale</p>
     <p><a href="?target_link=LOGOUT">Logout</a></p>
