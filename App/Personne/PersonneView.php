@@ -24,11 +24,11 @@ $( "#datepicker" ).datepicker({
     dateFormat: 'yy-mm-dd',
     firstDay : 1,
     changeYear: true,
-    yearRange:'-90:+0'
+    yearRange:'-130:+0'
     });
 });
 
-function go(tr,id){
+function updateScript(tr,id){
     
     // tr : contient la ligne complète selectionné
     var listTd = tr.childNodes;
@@ -66,6 +66,16 @@ function go(tr,id){
       
 
 }
+
+function verifDelete()
+{
+    if(confirm("Etes vous sûr de vouloir supprimer cet élément ?")){
+        return true;
+    }
+    else {
+        return false;
+        }
+}
     </script>
   </head>
  
@@ -74,16 +84,22 @@ function go(tr,id){
     <br>
    
     <table width="100%">
-        
+        <tr>
+            <td>Nom:</td>
+            <td>Prenom:</td>
+            <td>Adresse:</td>
+            <td>Date de naissance:</td>
+            <td>Qualite</td>
+        </tr>
     <?php
         while($row = $req->fetch()){
-       echo "<tr onclick='go(this," . $row['id']. ");'>"
+       echo "<tr onclick='updateScript(this," . $row['id']. ");'>"
     . "<td>" . $row['nom'] . '</td>'
                . '<td>' . $row['prenom'] . '</td>'
                . '<td>' . $row['adresse'] . '</td>'
                . '<td>' . $row['date_naissance'] . '</td>'
                . '<td>' . $row['qualite'] . '</td>'
-               . '<td>' . '<a href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>'
+               . '<td>' . '<a onclick="return verifDelete();" href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>'
                . '</tr>';
         }
     ?>
