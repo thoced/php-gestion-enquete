@@ -4,6 +4,7 @@
   <head>
     <meta content="text/html; charset=windows-1252" http-equiv="content-type">
     <link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="./Style/.AppCss.css"> 
     <script src="jquery-3.2.1.js"></script>
     <script src="./jquery-ui-1.12.1/jquery-ui.js"></script>
     <script type="application/x-javascript">
@@ -82,8 +83,8 @@ function verifDelete()
   <body>&nbsp; <br>
     <br>
     <br>
-   
-    <table width="100%">
+  <div class="list">
+    <table width="95%" align="center">
         <tr>
             <td>Nom:</td>
             <td>Prenom:</td>
@@ -104,7 +105,7 @@ function verifDelete()
         }
     ?>
     </table>
-   
+  </div>
     <br>
     <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne" id="form_personne">
       <table style="width: 100%;" border="0">
