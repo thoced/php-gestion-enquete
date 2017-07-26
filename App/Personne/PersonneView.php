@@ -107,6 +107,7 @@ function verifDelete()
     </table>
   </div>
     <br>
+    <div class="form">
     <form method="POST" action="?target_link=VIEWPERSONNES" name="form_personne" id="form_personne">
       <table style="width: 100%;" border="0">
         <tbody>
@@ -152,6 +153,7 @@ function verifDelete()
         </tbody>
       </table>
     </form>
+    </div>
     <a href="?target_link=MAINVIEW">Retour</a><br>
   </body>
 </html>

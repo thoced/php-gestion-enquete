@@ -26,9 +26,10 @@
           <td style="width: 404.7px;">Gestion des Personnes physique<br>
             <br>
             <a href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
-          <td><br>
+          <td>Gestion des documents<br><br>
+              <a href="?target_link=VIEWDOCUMENTS">Voir les documents</a>
           </td>
-          <td><br>
+          <td> </td><br>
           </td>
         </tr>
       </tbody>

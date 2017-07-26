@@ -13,7 +13,17 @@ and open the template in the editor.
   width:90%;
   overflow:auto;
   background-color:#eaf2f8;
-  position: relative; 
+  position:  relative; 
+  left:5%;
+  border-radius: 6px;
+}
+
+.form{
+  height:35%;
+  width:90%;
+  overflow:auto;
+  background-color:#eaf2f8;
+  position:  relative; 
   left:5%;
   border-radius: 6px;
 }
