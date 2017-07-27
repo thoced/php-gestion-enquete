@@ -50,14 +50,21 @@ class DocumentCtrl extends BaseController{
     }
 
     public function update($login, $setting, $action, $id, $update) {
+        // controle sur la date de naissance
+        $date = $update['date'];
+            if(strlen($date) == 0){
+                $date = null;
+            }
+        
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare("update t_document set ref_id_type = :ref_id_type, titre = :titre, commentaire = :commentaire, date = :date, reference = :reference where id = :id");
+        $req = $db->_dbb->prepare("update t_document set ref_id_type = :ref_id_type, titre = :titre, commentaire = :commentaire, date = :date, reference = :reference where id = :id AND ref_id_folders = :ref_id_folders");
         $req->execute(array("ref_id_type" => $update['type'],
                             "titre" => $update['titre'],
                             "commentaire" => $update['commentaire'],
-                            "date" => $update['date'],
+                            "date" => $date,
                             "reference" => $update['reference'],
-                            "id" => $id));
+                            "id" => $id,
+                            "ref_id_folders" => $setting->getIdFolderSelected()));
         // appel à la vue
         $this->show($login, $setting, $action, $id, $update);
     }
