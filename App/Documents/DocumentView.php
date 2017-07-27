@@ -29,7 +29,7 @@ $( "#datepicker" ).datepicker({
     });
 });
 
-function updateScript(tr,id){
+function updateScriptDocument(tr,id){
     
     // tr : contient la ligne complète selectionné
     var listTd = tr.childNodes;
@@ -103,7 +103,7 @@ function verifDelete()
         </tr>
     <?php
         while($row = $req->fetch()){
-       echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScript(this," . $row['0']. ");'>"
+       echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScriptDocument(this," . $row['0']. ");'>"
     . "<td>" . $row['titre'] . '</td>'
                . '<td>' . $row['commentaire'] . '</td>'
                . '<td>' . $row['date'] . '</td>'
