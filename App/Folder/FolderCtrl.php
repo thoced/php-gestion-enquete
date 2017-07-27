@@ -16,19 +16,8 @@ require_once './App/Controller/BaseController.php';
 
 class FolderCtrl extends BaseController{
     //put your code here
-    public function run($login,$setting, $action, $id, $update) {
-        
-        switch($action)
-        {
-            case 'SELECT':$this->selectFolder($setting,$id);
-                break;
-            
-            default: $this->showFolder($login);
-                     break;
-        }
-    }
     
-    private function showFolder($login)
+    public function show($login,$setting,$action,$id,$update)
     {
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare("select * from t_folders inner join t_link_group_folders on t_folders.id = t_link_group_folders.ref_id_folders "
@@ -42,7 +31,7 @@ class FolderCtrl extends BaseController{
         require './App/Folder/ViewFoldersView.php';
     }
     
-    private function selectFolder($setting,$id)
+    public function select($login,$setting,$action,$id,$update)
     {
         if(is_numeric($id)){
             $setting->setIdFolderSelected($id);
@@ -56,5 +45,16 @@ class FolderCtrl extends BaseController{
         parent::__construct();
     }
 
+    public function delete($login,$setting,$action,$id,$update) {
+        
+    }
+
+    public function insert($login,$setting,$action,$id,$update) {
+        
+    }
+
+    public function update($login,$setting,$action,$id,$update) {
+        
+    }
 
 }

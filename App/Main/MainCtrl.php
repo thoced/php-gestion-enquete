@@ -15,16 +15,8 @@ require_once './App/Controller/BaseController.php';
 
 class MainCtrl extends BaseController{
     //put your code here
-    public function run($login, $setting, $action, $id, $update) {
-        
-        switch($action)
-        {
-            default:$this->showMainView($login,$setting);
-                break;
-        }
-    }
-
-    private function showMainView($login,$setting){
+   
+    public function show($login,$setting,$action,$id,$update){
         $user = "";
         $folder = "Aucun dossier sélectionné";
         if(isset($login))
@@ -37,6 +29,22 @@ class MainCtrl extends BaseController{
           
     public function __construct() {
         parent::__construct();
+    }
+
+    public function delete($login,$setting,$action,$id,$update) {
+        
+    }
+
+    public function insert($login,$setting,$action,$id,$update) {
+        
+    }
+
+    public function update($login,$setting,$action,$id,$update) {
+        
+    }
+
+    public function select($login, $setting, $action, $id, $update) {
+        
     }
 
 }

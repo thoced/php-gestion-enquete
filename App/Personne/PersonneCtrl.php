@@ -17,27 +17,8 @@ require_once './App/Setting/SettingModel.php';
 class PersonneCtrl extends BaseController
 {
     
-    public function run($login,$setting,$action,$id,$update)
-    {
- 
-        switch($action)
-        {
-            case 'DELETE':$this->deletePerson($setting, $id);
-                          break;
-                      
-            case 'UPDATE':$this->updatePerson($setting, $id, $update);
-                          break;
-                      
-            case 'INSERT':$this->insertPerson($setting, $update);
-                          break;
-            
-            default:$this->showPerson($setting);
-                    break;
-        }
-
-    }
-    
-    private function updatePerson($setting,$id,$update)
+       
+    public function update($login,$setting,$action,$id,$update)
     {
        // controlle sur la date de naissance
             $date = $update['date_naissance'];
@@ -52,10 +33,10 @@ class PersonneCtrl extends BaseController
             $req->execute(array('nom' =>$update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $date, 'qualite' => $update['qualite'],'id' => $id));
         }
         
-        $this->showPerson($setting);
+        $this->show($login,$setting,$action,$id,$update);
     }
     
-    private function deletePerson($setting,$id)
+    public function delete($login,$setting,$action,$id,$update)
     {
          // suppresion d'une personne
        
@@ -65,10 +46,10 @@ class PersonneCtrl extends BaseController
         $req->execute(array('id' =>$id));
         }
         
-        $this->showPerson($setting);
+        $this->show($login,$setting,$action,$id,$update);
     }
     
-    private function insertPerson($setting,$update)
+    public function insert($login,$setting,$action,$id,$update)
     {
         
             // controlle sur la date de naissance
@@ -82,13 +63,13 @@ class PersonneCtrl extends BaseController
             $ret = $req->execute(array('nom' => $update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $date, 'qualite' => $update['qualite'],'ref_id_folders' => $setting->getIdFolderSelected()));
           
             
-            $this->showPerson($setting);
+            $this->show($login,$setting,$action,$id,$update);
       
         
        
     }
     
-    private function showPerson($setting)
+    public function show($login,$setting,$action,$id,$update)
     {
          // reception des Personnes
         $db = DbConnect::getInstance();
@@ -101,6 +82,10 @@ class PersonneCtrl extends BaseController
     
     public function __construct() {
         parent::__construct();
+    }
+
+    public function select($login, $setting, $action, $id, $update) {
+        
     }
 
 }
