@@ -29,8 +29,8 @@ class PersonneCtrl extends BaseController
         if(is_numeric($id)){
             $db = DbConnect::getInstance();
             $req = $db->_dbb->prepare('update t_personne set nom = :nom,prenom = :prenom,adresse = :adresse, date_naissance = :date_naissance, qualite = :qualite '
-                    . 'where id = :id');
-            $req->execute(array('nom' =>$update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $date, 'qualite' => $update['qualite'],'id' => $id));
+                    . 'where id = :id AND ref_id_folders = :ref_id_folders');
+            $req->execute(array('nom' =>$update['nom'], 'prenom' => $update['prenom'], 'adresse' => $update['adresse'],'date_naissance' => $date, 'qualite' => $update['qualite'],'id' => $id,'ref_id_folders' => $setting->getIdFolderSelected()));
         }
         
         $this->show($login,$setting,$action,$id,$update);
