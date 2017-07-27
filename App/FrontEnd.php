@@ -10,6 +10,7 @@ require_once './App/Login/LoginModel.php';
 require_once './App/Personne/PersonneCtrl.php';
 require_once './App/Folder/FolderCtrl.php';
 require_once './App/Documents/DocumentCtrl.php';
+require_once './App/Annexe/AnnexeSelectCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
 
@@ -60,6 +61,11 @@ if(isset($_SESSION['LOGIN']))
     
     switch($target)
       {
+      
+      case 'VIEWSELECTANNEXES':
+                        new AnnexeSelectCtrl();
+                        die;
+                        break;
         
       case 'VIEWDOSSIERS': 
                         new FolderCtrl();
