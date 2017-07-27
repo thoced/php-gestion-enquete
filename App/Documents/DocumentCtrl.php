@@ -35,7 +35,9 @@ class DocumentCtrl extends BaseController{
     }
 
     public function select($login, $setting, $action, $id, $update) {
+        $this->show($login, $setting, $action, $id, $update);
         
+      
     }
 
     public function show($login, $setting, $action, $id, $update) {
@@ -48,8 +50,7 @@ class DocumentCtrl extends BaseController{
         $reqType->execute();
         // appel à la vue
         require './App/Documents/DocumentView.php';
-        // appel au controler annexe
-        new AnnexeSelectCtrl();
+       
     }
 
     public function update($login, $setting, $action, $id, $update) {
