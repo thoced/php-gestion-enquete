@@ -8,20 +8,22 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.return{
+    position: fixed;
+    bottom: 10%;
+}
 
 table { 
     border-collapse: collapse; 
     border-spacing: 2px;
-
+    
 }
 
 body{
     background-color:  #f5cba7;
 }
 
-
-
-.list, .listAnnexe {
+.list, .listAnnexe, .form {
   height:35%;
   width:90%;
   overflow:auto;
@@ -29,20 +31,16 @@ body{
   position:  relative; 
   left:5%;
   border-radius: 6px;
+  cursor: Pointer;
 }
 
 .listAnnexe{
-    height: 15%;
+    height: 20%;
+    top: 15%;
 }
 
 .form{
-  height:25%;
-  width:90%;
-  overflow:auto;
-  background-color:#eaf2f8;
-  position:  relative; 
-  left:5%;
-  border-radius: 6px;
+     cursor:  default;  
 }
 
 #Title {
