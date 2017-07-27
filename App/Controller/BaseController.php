@@ -62,7 +62,7 @@ abstract class BaseController
                             break;
             case 'INSERT':  $this->insert($login,$setting,$action,$id,$update);
                             break;
-            case "SELECT":  $this->select($login, $setting, $action, $id, $update);
+            case 'SELECT':  $this->select($login, $setting, $action, $id, $update);
                             break;
             default      :  $this->show($login,$setting,$action,$id,$update);
                             break;
