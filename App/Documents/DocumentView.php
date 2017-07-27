@@ -68,6 +68,15 @@ function updateScript(tr,id){
 
 }
 
+function mouseOver(tr){
+      tr.style.backgroundColor = "#5dade2"
+}
+
+function mouseOut(tr){
+   tr.style.backgroundColor = null;
+}
+
+
 function verifDelete()
 {
     if(confirm("Etes vous sûr de vouloir supprimer cet élément ?")){
@@ -94,7 +103,7 @@ function verifDelete()
         </tr>
     <?php
         while($row = $req->fetch()){
-       echo "<tr onclick='updateScript(this," . $row['0']. ");'>"
+       echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScript(this," . $row['0']. ");'>"
     . "<td>" . $row['titre'] . '</td>'
                . '<td>' . $row['commentaire'] . '</td>'
                . '<td>' . $row['date'] . '</td>'
