@@ -8,6 +8,17 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+
+table { 
+    border-collapse: collapse; 
+    border-spacing: 2px;
+
+}
+
+body{
+    background-color:  #f5cba7;
+}
+
 .list {
   height:35%;
   width:90%;
