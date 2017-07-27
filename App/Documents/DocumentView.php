@@ -60,7 +60,7 @@ function updateScriptDocument(tr,id){
          for(i=0;i<input.options.length;i++){
              if(input.options[i].text === listTd[4].innerText)
                  input.options[i].selected = true;
-        }
+        }  
         
         // changement d'action pour le form
         document.getElementById("form_document").setAttribute("action","?target_link=VIEWDOCUMENTS&action=UPDATE&id=" + id);
@@ -103,13 +103,14 @@ function verifDelete()
         </tr>
     <?php
         while($row = $req->fetch()){
-       echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScriptDocument(this," . $row['0']. ");'>"
+       echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScriptDocument(this," . $row[0]. ");'>"
     . "<td>" . $row['titre'] . '</td>'
                . '<td>' . $row['commentaire'] . '</td>'
                . '<td>' . $row['date'] . '</td>'
                . '<td>' . $row['reference'] . '</td>'
                . '<td>' . $row['type'] . '</td>'
-               . '<td>' . '<a onclick="return verifDelete();" href="?target_link=VIEWDOCUMENTS&action=DELETE&id=' . $row['0'] . '">Supprimer</a>' . '</td>'
+               . '<td>' . '<a href="?target_link=VIEWSELECTANNEXES&id=' . $row[0] . '">Annexes</a>' . '</td>'
+               . '<td>' . '<a onclick="return verifDelete();" href="?target_link=VIEWDOCUMENTS&action=DELETE&id=' . $row[0] . '">Supprimer</a>' . '</td>'
                . '</tr>';
         }
     ?>
@@ -118,7 +119,7 @@ function verifDelete()
     <br>
     <div class="form">
     <form method="POST" action="?target_link=VIEWDOCUMENTS" name="form_document" id="form_document">
-      <table style="width: 100%;" border="0">
+      <table>
         <tbody>
           <tr>
             <td>Titre</td>
@@ -164,6 +165,6 @@ function verifDelete()
       </table>
     </form>
     </div>
-    <a href="?target_link=MAINVIEW">Retour</a><br>
+    <a class="return" href="?target_link=MAINVIEW">Retour</a><br>
   </body>
 </html>
