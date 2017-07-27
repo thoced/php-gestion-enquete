@@ -9,6 +9,7 @@ require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
 require_once './App/Personne/PersonneCtrl.php';
 require_once './App/Folder/FolderCtrl.php';
+require_once './App/Documents/DocumentCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
 
@@ -65,6 +66,10 @@ if(isset($_SESSION['LOGIN']))
                         break;
                     
       case 'VIEWPERSONNES':  new PersonneCtrl();
+                        die;
+                        break;
+                    
+     case 'VIEWDOCUMENTS':  new DocumentCtrl();
                         die;
                         break;
 
