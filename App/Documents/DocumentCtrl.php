@@ -12,6 +12,7 @@
  * @author Thonon
  */
 require_once './App/Controller/BaseController.php';
+require_once './App/Annexe/AnnexeSelectCtrl.php';
 
 class DocumentCtrl extends BaseController{
     //put your code here
@@ -47,6 +48,8 @@ class DocumentCtrl extends BaseController{
         $reqType->execute();
         // appel à la vue
         require './App/Documents/DocumentView.php';
+        // appel au controler annexe
+        new AnnexeSelectCtrl();
     }
 
     public function update($login, $setting, $action, $id, $update) {
