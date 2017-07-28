@@ -110,7 +110,7 @@ function verifDelete()
                . '<td>' . $row['adresse'] . '</td>'
                . '<td>' . $row['date_naissance'] . '</td>'
                . '<td>' . $row['qualite'] . '</td>'
-               . '<td>' . '<a onclick="return verifDelete();" href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>'
+               . '<td>' . '<a class="contenu" class="supprimer" onclick="return verifDelete();" href="?target_link=VIEWPERSONNES&action=DELETE&id=' . $row['id'] . '">Supprimer</a>' . '</td>'
                . '</tr>';
         }
     ?>
