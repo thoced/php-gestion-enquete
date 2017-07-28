@@ -31,32 +31,21 @@ class AnnexeSelectCtrl extends BaseController{
         }
         
         $filePath = $_FILES['raw']['tmp_name'];
-        if($file = fopen($filePath,'rb') == false){
-            throw new Exception("Erreur dans l'ouverture du fichier temporaire");
-        }
-
+        $file = fopen($filePath,'rb');
         $tab = fread($file, $_FILES['raw']['size']);
         fclose($file);
 
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare('insert into t_annexe (libelle,commentaire,raw,ref_id_folders) values ('
+        $req = $db->_dbb->prepare('insert into t_annexe (libelle,commentaire,raw,ref_id_document) values ('
                 . ':libelle,'
                 . ':commentaire,'
                 . ':raw,'
-                . ':ref_id_folders)');
+                . ':ref_id_document)');
         $req->execute(array("libelle" => $update['libelle'],
                             "commentaire" => $update['commentaire'],
                             "raw" => $tab,
-                            "ref_id_folders" => $setting->getIdFolderSelected()));
-        
-        $lastId = $db->_dbb->lastInsertId();
-      
-        
-        // ajout ensuite dans la table t_link_annexe_document;
-        $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare('insert into t_link_annexe_document (ref_id_annexe,ref_id_document) values (:ref_id_annexe,:ref_id_document)');
-        $req->execute(array("ref_id_annexe" => $lastId,
                             "ref_id_document" => $id));
+        
         // appel à la vue
         $this->show($login, $setting, $action, $id, $update);
     }
@@ -78,7 +67,7 @@ class AnnexeSelectCtrl extends BaseController{
 
     public function show($login, $setting, $action, $id, $update) {
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare('select * from t_annexe where id IN (select ref_id_annexe from t_link_annexe_document WHERE t_link_annexe_document.ref_id_document = :id)');
+        $req = $db->_dbb->prepare('select * from t_annexe where ref_id_document = :id');
         $req->execute(array('id' => $id));
         // appel à la vue
         require './App/Annexe/AnnexeSelectView.php';
