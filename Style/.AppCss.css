@@ -7,6 +7,13 @@ and open the template in the editor.
     Created on : 26 juil. 2017, 21:30:34
     Author     : Thonon
 */
+.contenu{
+    color:green;
+}
+
+.supprimer{
+    color:red;
+}
 
 .exception{
     background-color: red;
@@ -33,10 +40,10 @@ table {
 }
 
 body{
-    background-color:  #f5cba7;
+    background-color:  #85929e   ;
 }
 
-.list, .listAnnexe, .form {
+.list, .listAnnexe, .form, .contenuArea {
   height:35%;
   width:90%;
   overflow:auto;
@@ -48,6 +55,10 @@ body{
   border-color : blue;
   border-width: 6px;
   border-style:  solid;
+}
+
+.contenuArea{
+    height:65%;
 }
 
 .listAnnexe{
