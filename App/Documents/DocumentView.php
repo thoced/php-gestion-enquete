@@ -158,7 +158,7 @@ function verifDelete()
           </tr>
           <tr>
               <td><input type="submit" value="Modifier"></td>
-              <td><input type="submit" value="Ajouter" onclick="document.getElementById('form_document').setAttribute('action','?target_link=VIEDOCUMENTS&action=INSERT');"></td>
+              <td><input type="submit" value="Ajouter" onclick="document.getElementById('form_document').setAttribute('action','?target_link=VIEWDOCUMENTS&action=INSERT');"></td>
               
           </tr>
         </tbody>
