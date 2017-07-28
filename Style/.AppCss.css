@@ -8,6 +8,19 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.exception{
+    background-color: red;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 60%;
+    height: 15%;
+    border-radius: 6px;
+    border-width: 6px;
+    border-color: blue;
+    border-style:  solid;
+}
+
 .return{
     position: fixed;
     bottom: 10%;

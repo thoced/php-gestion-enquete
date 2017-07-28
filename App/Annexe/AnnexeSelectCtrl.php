@@ -23,18 +23,18 @@ class AnnexeSelectCtrl extends BaseController{
         
         // récupération du fichier
         if(!isset($_FILES) || !isset($_FILES['raw'])){
-             $this->show($login, $setting, $action, $id, $update);
-             die;
+             throw new Exception("Erreur dans le chargement du fichier PDF");     
         }
         
-        if($_FILES['raw']['error'] > 0)
-        {
-            $this->show($login, $setting, $action, $id, $update);
-            die;
+        if($_FILES['raw']['error'] > 0){
+           throw new Exception("Erreur dans le chargement du fichier PDF");
         }
         
         $filePath = $_FILES['raw']['tmp_name'];
-        $file = fopen($filePath,'rb');
+        if($file = fopen($filePath,'rb') == false){
+            throw new Exception("Erreur dans l'ouverture du fichier temporaire");
+        }
+
         $tab = fread($file, $_FILES['raw']['size']);
         fclose($file);
 

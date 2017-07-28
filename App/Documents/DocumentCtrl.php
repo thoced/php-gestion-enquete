@@ -23,15 +23,22 @@ class DocumentCtrl extends BaseController{
     }
 
     public function delete($login, $setting, $action, $id, $update) {
+        if(!isset($id) || !is_numeric($id)){
+            throw new Exception("La variable id est vide ou n'est pas numérique");
+        }
+        
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('delete from t_document where id = :id ');
-        $req->execute(array("id" => $id));
+        if($req->execute(array("id" => $id)) == false)
+            throw new Exception ("Suppresion non réalisée, une erreur est survenue");
         // rappel à la methode show
         $this->show($login, $setting, $action, $id, $update);
+        
     }
 
     public function insert($login, $setting, $action, $id, $update) {
-        
+        echo "tto";
+        $this->show($login, $setting, $action, $id, $update);
     }
 
     public function select($login, $setting, $action, $id, $update) {
@@ -41,13 +48,19 @@ class DocumentCtrl extends BaseController{
     }
 
     public function show($login, $setting, $action, $id, $update) {
+        
+        if(!isset($setting) || is_null($setting))
+            throw new Exception ("Probleme avec la variable setting");
+        
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('select * from t_document inner join t_type_document ON t_document.ref_id_type = t_type_document.id where t_document.ref_id_folders = :idfolder');
-        $req->execute(array("idfolder" => $setting->getIdFolderSelected()));
+        if($req->execute(array("idfolder" => $setting->getIdFolderSelected())) == false)
+            throw new Exception ("Lecteur des documents non réalisée, une erreur est survenue");
         // récupération des types de document
         $db = DbConnect::getInstance();
         $reqType = $db->_dbb->prepare('select * from t_type_document');
-        $reqType->execute();
+        if($reqType->execute() == false)
+            throw new Exception ("Lecteur des types de document non réalisée, une erreur est survenue");
         // appel à la vue
         require './App/Documents/DocumentView.php';
        
@@ -55,6 +68,9 @@ class DocumentCtrl extends BaseController{
 
     public function update($login, $setting, $action, $id, $update) {
         // controle sur la date de naissance
+        if(!isset($id) || !is_numeric($id) || !isset($setting))
+            throw new Exception("La variable id ou la variable setting (est/sont) null ou non numérique(s)");
+        
         $date = $update['date'];
             if(strlen($date) == 0){
                 $date = null;
@@ -62,13 +78,16 @@ class DocumentCtrl extends BaseController{
         
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare("update t_document set ref_id_type = :ref_id_type, titre = :titre, commentaire = :commentaire, date = :date, reference = :reference where id = :id AND ref_id_folders = :ref_id_folders");
-        $req->execute(array("ref_id_type" => $update['type'],
+        if($req->execute(array("ref_id_type" => $update['type'],
                             "titre" => $update['titre'],
                             "commentaire" => $update['commentaire'],
                             "date" => $date,
                             "reference" => $update['reference'],
                             "id" => $id,
-                            "ref_id_folders" => $setting->getIdFolderSelected()));
+                            "ref_id_folders" => $setting->getIdFolderSelected())) == false){
+            throw new Exception("Erreur dans la modification des données, une erreur est survenue");
+        }
+                
         // appel à la vue
         $this->show($login, $setting, $action, $id, $update);
     }

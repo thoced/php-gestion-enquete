@@ -11,6 +11,7 @@ require_once './App/Personne/PersonneCtrl.php';
 require_once './App/Folder/FolderCtrl.php';
 require_once './App/Documents/DocumentCtrl.php';
 require_once './App/Annexe/AnnexeSelectCtrl.php';
+require_once './App/Exception/ExceptionCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
 
@@ -53,17 +54,19 @@ if(isset($_SESSION['LOGIN']))
     $setting->unserialize($_SESSION['SETTING']);
     }
    
+    $target = null;
     // reception de la valeur pour le dispatch
     if(isset($_GET['target_link'])){
         $target = $_GET['target_link'];
     }
     
-    
+    try
+    {
     switch($target)
       {
-      
+         
       case 'VIEWSELECTANNEXES':
-                        new AnnexeSelectCtrl();
+                         new AnnexeSelectCtrl();                
                         die;
                         break;
         
@@ -90,6 +93,11 @@ if(isset($_SESSION['LOGIN']))
                         break;
                     
       }
+    }
+    catch(Exception $e){
+     new ExceptionCtrl($e);
+     die;
+    }
  }
 
 
