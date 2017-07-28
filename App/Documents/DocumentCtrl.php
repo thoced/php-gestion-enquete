@@ -37,8 +37,39 @@ class DocumentCtrl extends BaseController{
     }
 
     public function insert($login, $setting, $action, $id, $update) {
-        echo "tto";
-        $this->show($login, $setting, $action, $id, $update);
+        
+        if(!isset($setting)){
+            throw new Exception("La variable setting pose probleme, une erreur est survenue");
+        }
+         if(!isset($update)){
+            throw new Exception("La variable update pose probleme, une erreur est survenue");
+        }
+        
+        // controlle sur la date de naissance
+        $date = $update['date'];
+        if(strlen($date) == 0){
+            $date = null;
+        }
+        
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare('insert into t_document (ref_id_type,titre,commentaire,date,reference,ref_id_folders) values('
+                . ':ref_id_type,'
+                . ':titre,'
+                . ':commentaire,'
+                . ':date,'
+                . ':reference,'
+                . ':ref_id_folders)');
+        if($req->execute(array("ref_id_type" => $update['type'],
+                            "titre" => $update['titre'],
+                            "commentaire" => $update['commentaire'],
+                            "date" => $date,
+                            "reference" => $update['reference'],
+                            "ref_id_folders"  => $setting->getIdFolderSelected())) == false){
+            
+             throw new Exception("L'insertion n'a pas eu lieu, une erreur est survenue");
+        } 
+        
+         $this->show($login, $setting, $action, $id, $update);
     }
 
     public function select($login, $setting, $action, $id, $update) {
