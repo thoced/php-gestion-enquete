@@ -110,7 +110,8 @@ function verifDelete()
                . '<td>' . $row['reference'] . '</td>'
                . '<td>' . $row['type'] . '</td>'
                . '<td>' . '<a href="?target_link=VIEWSELECTANNEXES&id=' . $row[0] . '">Annexes</a>' . '</td>'
-               . '<td>' . '<a onclick="return verifDelete();" href="?target_link=VIEWDOCUMENTS&action=DELETE&id=' . $row[0] . '">Supprimer</a>' . '</td>'
+               . '<td>' . '<a class="supprimer" onclick="return verifDelete();" href="?target_link=VIEWDOCUMENTS&action=DELETE&id=' . $row[0] . '">Supprimer</a>' . '</td>'
+               . '<td>' . '<a class="contenu" href="?target_link=VIEWCONTENU&id=' . $row['0'] . '">Contenu</a>'.  '</td>'
                . '</tr>';
         }
     ?>
@@ -128,7 +129,7 @@ function verifDelete()
           </tr>
           <tr>
             <td>Commentaire</td>
-            <td><input maxlength="32" size="32" name="commentaire" type="text" id="commentaire"></td>
+            <td><input maxlength="64" size="64" name="commentaire" type="text" id="commentaire"></td>
           </tr>
           <tr>
             <td>Date</td>
@@ -140,7 +141,7 @@ function verifDelete()
           <tr>
             <td>Reference</td>
             <td>
-              <input maxlength="128" size="128" name="reference" id="reference"
+              <input maxlength="64" size="64" name="reference" id="reference"
                 type="text">
               <br>
             </td>
@@ -156,10 +157,9 @@ function verifDelete()
               </select>
         </td>
           </tr>
-          <tr>
-              <td><input type="submit" value="Modifier"></td>
-              <td><input type="submit" value="Ajouter" onclick="document.getElementById('form_document').setAttribute('action','?target_link=VIEWDOCUMENTS&action=INSERT');"></td>
-              
+          <tr width="100%">
+              <td width="20%"><input type="submit" value="Modifier"></td>
+              <td width="20%"><input type="submit" value="Ajouter" onclick="document.getElementById('form_document').setAttribute('action','?target_link=VIEWDOCUMENTS&action=INSERT');"></td
           </tr>
         </tbody>
       </table>
