@@ -20,16 +20,17 @@
     <table style="width: 100%" border="1">
       <tbody>
         <tr>
-          <td style="width: 180.917px;">Gestion des Dossiers<br>
+          <td style="width: 25%;">Gestion des Dossiers<br>
             <br>
             <a href="?target_link=VIEWDOSSIERS">Voir les dossiers</a></td>
-          <td style="width: 404.7px;">Gestion des Personnes physique<br>
+          <td style="width: 25%;">Gestion des Personnes physique<br>
             <br>
             <a href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
-          <td>Gestion des documents<br><br>
+          <td style="width:25%;">Gestion des documents<br><br>
               <a href="?target_link=VIEWDOCUMENTS">Voir les documents</a>
           </td>
-          <td> </td><br>
+          <td style="width:25%;">Recherches<br><br>
+              <a href="?target_link=VIEWRECHERCHES">Recherche de contenu</a> 
           </td>
         </tr>
       </tbody>
