@@ -11,7 +11,11 @@
  *
  * @author Thonon
  */
-class SettingModel implements Serializable
+namespace App\Setting;
+
+use App\DbConnect;
+
+class SettingModel implements \Serializable 
 {
     private $idFolderSelected;
     

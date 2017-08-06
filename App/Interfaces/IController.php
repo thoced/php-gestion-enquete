@@ -10,6 +10,8 @@
  *
  * @author Thonon
  */
+namespace App\Interfaces;
+
 interface IController 
 {
     public function run();

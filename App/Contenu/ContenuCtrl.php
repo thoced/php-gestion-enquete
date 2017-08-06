@@ -11,7 +11,13 @@
  *
  * @author Thonon
  */
-require_once './App/Controller/BaseController.php';
+namespace App\Contenu;
+
+//require_once './App/Controller/BaseController.php';
+
+use App\DbConnect;
+use App\Controller\BaseController;
+
 
 class ContenuCtrl extends BaseController{
     //put your code here

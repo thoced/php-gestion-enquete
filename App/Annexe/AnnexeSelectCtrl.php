@@ -11,7 +11,12 @@
  *
  * @author Thonon
  */
-require_once './App/Controller/BaseController.php';
+namespace App\Annexe;
+
+//require_once './App/Controller/BaseController.php';
+
+use App\DbConnect;
+use App\Controller\BaseController;
 
 class AnnexeSelectCtrl extends BaseController{
     //put your code here

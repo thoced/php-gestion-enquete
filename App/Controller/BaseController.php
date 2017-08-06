@@ -11,6 +11,11 @@
  *
  * @author Thonon
  */
+namespace App\Controller;
+
+use App\Login\LoginModel;
+use App\Setting\SettingModel;
+
 abstract class BaseController 
 {
    // abstract public function run($login, $setting,$action,$id,$update);

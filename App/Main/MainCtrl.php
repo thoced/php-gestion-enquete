@@ -11,7 +11,11 @@
  *
  * @author Thonon
  */
-require_once './App/Controller/BaseController.php';
+namespace App\Main;
+
+//require_once './App/Controller/BaseController.php';
+
+use App\Controller\BaseController;
 
 class MainCtrl extends BaseController{
     //put your code here

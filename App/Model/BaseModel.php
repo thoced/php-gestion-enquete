@@ -11,6 +11,8 @@
  *
  * @author Thonon
  */
+namespace App\Model;
+
 class BaseModel 
 {
    public $db;

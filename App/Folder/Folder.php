@@ -11,6 +11,8 @@
  *
  * @author Thonon
  */
+namespace  App\Folder;
+
 class Folder 
 {
     public $id;

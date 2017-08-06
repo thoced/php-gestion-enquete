@@ -11,8 +11,14 @@
  *
  * @author Thonon
  */
-require_once './App/Controller/BaseController.php';
-require_once './App/Annexe/AnnexeSelectCtrl.php';
+
+namespace App\Documents;
+
+//require_once './App/Controller/BaseController.php';
+//require_once './App/Annexe/AnnexeSelectCtrl.php';
+
+use App\DbConnect;
+use App\Controller\BaseController;
 
 class DocumentCtrl extends BaseController{
     //put your code here

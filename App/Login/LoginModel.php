@@ -12,9 +12,9 @@
  * @author Thonon
  */
 
+namespace App\Login;
 
-
-class LoginModel implements Serializable
+class LoginModel implements \Serializable
 {
       
    public $isLoged = false;

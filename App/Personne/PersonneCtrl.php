@@ -11,8 +11,14 @@
  *
  * @author Thonon
  */
+
+namespace App\Personne;
+
 require_once './App/Controller/BaseController.php';
-require_once './App/Setting/SettingModel.php';
+//require_once './App/Setting/SettingModel.php';
+
+use App\DbConnect;
+use App\Controller\BaseController;
 
 class PersonneCtrl extends BaseController
 {

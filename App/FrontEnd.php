@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
 require_once './App/Personne/PersonneCtrl.php';
@@ -15,6 +16,18 @@ require_once './App/Contenu/ContenuCtrl.php';
 require_once './App/Exception/ExceptionCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
+
+use App\DbConnect;
+use App\Login\LoginModel;
+use App\Setting\SettingModel;
+use App\Controller\BaseController;
+use App\Contenu\ContenuCtrl;
+use App\Documents\DocumentCtrl;
+use App\Main\MainCtrl;
+use App\Folder\FolderCtrl;
+use App\Personne\PersonneCtrl;
+use App\Annexe\AnnexeSelectCtrl;
+
 
 
 if(!isset($_SESSION))
@@ -83,7 +96,8 @@ if(isset($_SESSION['LOGIN']))
                         die;
                         break;
                     
-     case 'VIEWDOCUMENTS':  new DocumentCtrl();
+    
+      case 'VIEWDOCUMENTS':  new DocumentCtrl();
                         die;
                         break;
 

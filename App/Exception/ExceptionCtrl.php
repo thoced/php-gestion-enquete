@@ -11,6 +11,8 @@
  *
  * @author Thonon
  */
+namespace App\Exception;
+
 class ExceptionCtrl 
 {
    

@@ -11,7 +11,12 @@
  *
  * @author Thonon
  */
-require_once './App/Controller/BaseController.php';
+namespace App\Folder;
+
+//require_once './App/Controller/BaseController.php';
+
+use App\Controller\BaseController;
+use App\DbConnect;
 
 
 class FolderCtrl extends BaseController{
