@@ -28,11 +28,11 @@ class AnnexeSelectCtrl extends BaseController{
         
         // récupération du fichier
         if(!isset($_FILES) || !isset($_FILES['raw'])){
-             throw new Exception("Erreur dans le chargement du fichier PDF");     
+             throw new \Exception("Erreur dans le chargement du fichier PDF");     
         }
         
         if($_FILES['raw']['error'] > 0){
-           throw new Exception("Erreur dans le chargement du fichier PDF");
+           throw new \Exception("Erreur dans le chargement du fichier PDF");
         }
         
         $filePath = $_FILES['raw']['tmp_name'];

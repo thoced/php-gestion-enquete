@@ -92,7 +92,7 @@ class DocumentCtrl extends BaseController{
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('select * from t_document inner join t_type_document ON t_document.ref_id_type = t_type_document.id where t_document.ref_id_folders = :idfolder');
         if($req->execute(array("idfolder" => $setting->getIdFolderSelected())) == false)
-            throw new Exception ("Lecteur des documents non réalisée, une erreur est survenue");
+            throw new \Exception ("Lecteur des documents non réalisée, une erreur est survenue");
         // récupération des types de document
         $db = DbConnect::getInstance();
         $reqType = $db->_dbb->prepare('select * from t_type_document');

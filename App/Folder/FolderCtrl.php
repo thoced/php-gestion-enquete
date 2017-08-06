@@ -25,7 +25,7 @@ class FolderCtrl extends BaseController{
     public function show($login,$setting,$action,$id,$update)
     {
         if(!isset($login)){
-            throw new Exception("La variable login est vide, une erreur est survenue");
+            throw new \Exception("La variable login est vide, une erreur est survenue");
         }
         
         $db = DbConnect::getInstance();
@@ -35,7 +35,7 @@ class FolderCtrl extends BaseController{
                     . "where t_link_group_users.ref_id_users = (select t_users.id from t_users where login = :login)) AND t_folders.visible = TRUE");
         
         if($req->execute(array("login" => $login->login)) == false){
-            throw new Exception("Erreur dans la selection des dossiers, une erreur est survenue");
+            throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
         }
         
         // appel à la vue
@@ -51,7 +51,7 @@ class FolderCtrl extends BaseController{
             
         }
         else
-            throw new Exception("La variable id n'est pas numérique");
+            throw new \Exception("La variable id n'est pas numérique");
     }
     
     public function __construct() {

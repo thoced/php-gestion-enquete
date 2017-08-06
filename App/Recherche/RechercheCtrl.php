@@ -17,7 +17,6 @@ require_once './App/Controller/BaseController.php';
 
 use App\DbConnect;
 use App\Controller\BaseController;
-use App\Exception\ExceptionCtrl;
 
 class RechercheCtrl extends BaseController{
     //put your code here
@@ -32,10 +31,10 @@ class RechercheCtrl extends BaseController{
     public function select($login, $setting, $action, $id, $update) {
         
         if(!isset($setting))
-            throw new Exception("Probleme avec la valeur setting, une erreur est survenue");
+            throw new \Exception("Probleme avec la valeur setting, une erreur est survenue");
         
         if(!isset($update) || !isset($update['contenu']))
-            throw new Exception("Probleme avec les valeurs de la variable update, une erreur est survenue");
+            throw new \Exception("Probleme avec les valeurs de la variable update, une erreur est survenue");
         
         // recherche dans les documents liés au folder en cours
         $db = DbConnect::getInstance();
