@@ -109,7 +109,7 @@ function verifDelete()
                . '<td>' . $row['date'] . '</td>'
                . '<td>' . $row['reference'] . '</td>'
                . '<td>' . $row['type'] . '</td>'
-               . '<td>' . '<a href="?target_link=VIEWSELECTANNEXES&id=' . $row[0] . '">Annexes</a>' . '</td>'
+               . '<td>' . '<a class="annexe" href="?target_link=VIEWSELECTANNEXES&id=' . $row[0] . '">Annexes</a>' . '</td>'
                . '<td>' . '<a class="supprimer" onclick="return verifDelete();" href="?target_link=VIEWDOCUMENTS&action=DELETE&id=' . $row[0] . '">Supprimer</a>' . '</td>'
                . '<td>' . '<a class="contenu" href="?target_link=VIEWCONTENU&id=' . $row['0'] . '">Contenu</a>'.  '</td>'
                . '</tr>';
