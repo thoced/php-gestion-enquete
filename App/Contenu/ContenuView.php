@@ -13,6 +13,6 @@
         </div>
          <p style="text-align: center;"><input type="submit" value="Enregistrer"></p>
          </form>
-        <a class="return" href="#null"  onclick="javascript:history.back();">Retour</a>
+        <a class="return" href="?target_link=VIEWDOCUMENTS">Retour</a>
     </body>
 </html>
