@@ -17,7 +17,8 @@
     <br>
     <p><br>
     </p>
-    <table style="width: 100%" border="1">
+    <div class="list">
+    <table style="width: 100%" border="0">
       <tbody>
         <tr>
           <td style="width: 25%;">Gestion des Dossiers<br>
@@ -39,6 +40,7 @@
             </td>
         </tr>
       </tbody>
+    </div>
     </table>
     <p><br>
     </p>
