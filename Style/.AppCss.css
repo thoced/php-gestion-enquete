@@ -7,6 +7,29 @@ and open the template in the editor.
     Created on : 26 juil. 2017, 21:30:34
     Author     : Thonon
 */
+
+.copyright{
+    position:absolute;
+    left:3%;
+    bottom:10%;
+    color:  #d6dbdf;
+}
+
+.login{
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 40%;
+    bottom: 50%;
+    background-color: #3284d0;
+    border-radius: 6px;
+    border-width: 6px;
+    border-color: #88b9e6;
+    border-style: solid;
+    
+   
+}
+
 .contenu{
     color:green;
 }
