@@ -2,19 +2,22 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" href="./Style/.AppCss.css"> 
     <title>login</title>
   </head>
   <body>
     <p><br>
     </p>
+    <br>
+    <p><h1 style="text-align: center; font-size: 92px; font-stretch:  semi-condensed;">G.E.L</h1></p>
+    <p><h3 style="text-align: center; font-size: 48px;">Gestion d'enquête locale</h1></p>
+    <div class="login">
     <form method="POST" action="?target_link=CHECKLOGIN" name="form_login">
-      <table style="width: 100%" border="1">
+      <table style="width: 100%;height: 100%;" border="0">
         <tbody>
           <tr>
-            <td style="width: 153.877px;">Login</td>
-            <td style="width: 1128.11px;"><input maxlength="64" size="64" name="login"
-
-                type="text"><br>
+            <td style="width:25%;">Login</td>
+            <td style="width:75%;"><input maxlength="64" size="64" name="login" type="text"><br>
             </td>
           </tr>
           <tr>
@@ -24,8 +27,8 @@
           </tr>
         </tbody>
       </table>
-      <input formmethod="post" name="submit" type="submit">
+      <input formmethod="post" name="submit" type="submit" value="Se connecter">
     </form>
-    <p><br>
-    </p>
+    </div>
+    <p class="copyright">Developpé par Thonon Cédric.</p>
 </body></html>
