@@ -57,6 +57,6 @@ function openNewWindow(id){
         </table>
       </form>
     </div>
-    <a class="return" href="?target_link=VIEWDOCUMENTS">Retour</a>
+     <a class="return" href="#null"  onclick="javascript:history.back();">Retour</a>
 </body>
 </html>
