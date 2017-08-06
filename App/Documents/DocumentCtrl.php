@@ -30,13 +30,13 @@ class DocumentCtrl extends BaseController{
 
     public function delete($login, $setting, $action, $id, $update) {
         if(!isset($id) || !is_numeric($id)){
-            throw new Exception("La variable id est vide ou n'est pas numérique");
+            throw new \Exception("La variable id est vide ou n'est pas numérique");
         }
         
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('delete from t_document where id = :id ');
         if($req->execute(array("id" => $id)) == false)
-            throw new Exception ("Suppresion non réalisée, une erreur est survenue");
+            throw new \Exception ("Suppresion non réalisée, une erreur est survenue");
         // rappel à la methode show
         $this->show($login, $setting, $action, $id, $update);
         
@@ -45,10 +45,10 @@ class DocumentCtrl extends BaseController{
     public function insert($login, $setting, $action, $id, $update) {
         
         if(!isset($setting)){
-            throw new Exception("La variable setting pose probleme, une erreur est survenue");
+            throw new \Exception("La variable setting pose probleme, une erreur est survenue");
         }
          if(!isset($update)){
-            throw new Exception("La variable update pose probleme, une erreur est survenue");
+            throw new \Exception("La variable update pose probleme, une erreur est survenue");
         }
         
         // controlle sur la date de naissance
@@ -72,7 +72,7 @@ class DocumentCtrl extends BaseController{
                             "reference" => $update['reference'],
                             "ref_id_folders"  => $setting->getIdFolderSelected())) == false){
             
-             throw new Exception("L'insertion n'a pas eu lieu, une erreur est survenue");
+             throw new \Exception("L'insertion n'a pas eu lieu, une erreur est survenue");
         } 
         
          $this->show($login, $setting, $action, $id, $update);
@@ -87,7 +87,7 @@ class DocumentCtrl extends BaseController{
     public function show($login, $setting, $action, $id, $update) {
         
         if(!isset($setting) || is_null($setting))
-            throw new Exception ("Probleme avec la variable setting");
+            throw new \Exception ("Probleme avec la variable setting");
         
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('select * from t_document inner join t_type_document ON t_document.ref_id_type = t_type_document.id where t_document.ref_id_folders = :idfolder');
@@ -97,7 +97,7 @@ class DocumentCtrl extends BaseController{
         $db = DbConnect::getInstance();
         $reqType = $db->_dbb->prepare('select * from t_type_document');
         if($reqType->execute() == false)
-            throw new Exception ("Lecteur des types de document non réalisée, une erreur est survenue");
+            throw new \Exception ("Lecteur des types de document non réalisée, une erreur est survenue");
         // appel à la vue
         require './App/Documents/DocumentView.php';
        
@@ -106,7 +106,7 @@ class DocumentCtrl extends BaseController{
     public function update($login, $setting, $action, $id, $update) {
         // controle sur la date de naissance
         if(!isset($id) || !is_numeric($id) || !isset($setting))
-            throw new Exception("La variable id ou la variable setting (est/sont) null ou non numérique(s)");
+            throw new \Exception("La variable id ou la variable setting (est/sont) null ou non numérique(s)");
         
         $date = $update['date'];
             if(strlen($date) == 0){
@@ -122,7 +122,7 @@ class DocumentCtrl extends BaseController{
                             "reference" => $update['reference'],
                             "id" => $id,
                             "ref_id_folders" => $setting->getIdFolderSelected())) == false){
-            throw new Exception("Erreur dans la modification des données, une erreur est survenue");
+            throw new \Exception("Erreur dans la modification des données, une erreur est survenue");
         }
                 
         // appel à la vue
