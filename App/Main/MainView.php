@@ -22,15 +22,15 @@
         <tr>
           <td style="width: 25%;">Gestion des Dossiers<br>
             <br>
-            <a href="?target_link=VIEWDOSSIERS">Voir les dossiers</a></td>
+            <a class="contenu" href="?target_link=VIEWDOSSIERS">Voir les dossiers</a></td>
           <td style="width: 25%;">Gestion des Personnes physique<br>
             <br>
-            <a href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
+            <a class="contenu" href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
           <td style="width:25%;">Gestion des documents<br><br>
-              <a href="?target_link=VIEWDOCUMENTS">Voir les documents</a>
+              <a class="contenu" href="?target_link=VIEWDOCUMENTS">Voir les documents</a>
           </td>
           <td style="width:25%;">Recherches<br><br>
-              <a href="?target_link=VIEWRECHERCHES">Recherche de contenu</a> 
+              <a class="contenu" href="?target_link=VIEWRECHERCHES">Recherche de contenu</a> 
           </td>
         </tr>
       </tbody>
