@@ -30,6 +30,10 @@ and open the template in the editor.
    
 }
 
+.annexe{
+    color: #dc7633;
+}
+
 .contenu{
     color:green;
 }
@@ -63,7 +67,7 @@ table {
 }
 
 body{
-    background-color:  #85929e   ;
+    background-color:   #ccd1d1    ;
 }
 
 .list, .listAnnexe, .form, .contenuArea {
