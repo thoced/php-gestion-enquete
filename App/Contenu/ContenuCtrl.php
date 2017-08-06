@@ -29,6 +29,9 @@ class ContenuCtrl extends BaseController{
 
     public function show($login, $setting, $action, $id, $update) {
         
+        if(!isset($id))
+            throw new Exception("Une erreur est survenue avec la variable id");
+        
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare('select contenu from t_document where id = :id');
         $req->execute(array("id" => $id));
