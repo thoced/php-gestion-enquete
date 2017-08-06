@@ -28,5 +28,5 @@
 </table>
 </div>
 <br>
-<a href="?target_link=MAINVIEW">Retour</a>
+ <a class="return" href="?target_link=MAINVIEW">Retour</a>
   </body>
