@@ -164,6 +164,6 @@ function verifDelete()
       </table>
     </form>
     </div>
-    <a href="?target_link=MAINVIEW">Retour</a><br>
+     <a class="return" href="?target_link=MAINVIEW">Retour</a>
   </body>
 </html>
