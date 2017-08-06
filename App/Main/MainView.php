@@ -33,6 +33,11 @@
               <a class="contenu" href="?target_link=VIEWRECHERCHES">Recherche de contenu</a> 
           </td>
         </tr>
+        <tr>
+            <td style="width:25%;">Synopsis<br><br>
+               <a class="contenu" href="?target_link=VIEWSYNOPSIS">Suivi de l'enquêtes</a>   
+            </td>
+        </tr>
       </tbody>
     </table>
     <p><br>
