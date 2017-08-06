@@ -17,6 +17,7 @@ require_once './App/Recherche/RechercheCtrl.php';
 require_once './App/Exception/ExceptionCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
+require_once './App/Synopsis/SynopsisCtrl.php';
 
 use App\DbConnect;
 use App\Login\LoginModel;
@@ -30,7 +31,7 @@ use App\Personne\PersonneCtrl;
 use App\Annexe\AnnexeSelectCtrl;
 use App\Recherche\RechercheCtrl;
 use App\Exception\ExceptionCtrl;
-
+use App\Synopsis\SynopsisCtrl;
 
 
 if(!isset($_SESSION))
@@ -81,6 +82,10 @@ if(isset($_SESSION['LOGIN']))
     {
     switch($target)
       {
+        
+      case 'VIEWSYNOPSIS':new SynopsisCtrl();
+                          die;
+                          break;
       
       case 'VIEWRECHERCHES':
                         new RechercheCtrl();
