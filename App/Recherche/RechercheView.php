@@ -19,9 +19,7 @@ and open the template in the editor.
                         Contenu à rechercher:
                     </td>
                     <td>
-                        <textarea cols="64" rows="8" name="contenu">
-                            
-                        </textarea>
+                        <textarea cols="64" rows="8" name="contenu"></textarea>
                     </td>
                 </tr> 
                 <tr>
@@ -34,14 +32,6 @@ and open the template in the editor.
                 </tr>
             </table>
             </form>
-        </div>
-        <br>
-        <br>
-        <div class="list">
-            <table style="width: 100%;">
-                
-                
-            </table>
         </div>
         <a class="return" href="?target_link=MAINVIEW">Retour</a>
     </body>
