@@ -31,6 +31,23 @@ $( "#datepicker" ).datepicker({
     yearRange:'-130:+0'
     });
 });
+
+function mouseOver(tr){
+      tr.style.backgroundColor = "#5dade2"
+}
+
+function mouseOut(tr){
+   tr.style.backgroundColor = null;
+}
+
+function validedelete(){
+    if(confirm("Etes vous sûr de vouloir supprimer cet élément ?")){
+        return true;
+    }
+    else {
+        return false;
+        }
+}
          </script>
         <title></title>
     </head>
@@ -47,11 +64,12 @@ $( "#datepicker" ).datepicker({
                 <?php
                     $i = 1;
                     while($row = $req->fetch()){
-                        echo "<tr>"
+                        echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
                         . "<td>" . $i . ".</td>"
                         . "<td>" . $row['date'] . "</td>"
-                           . "<td>" . $row['commentaire'] . "</td>"
-                                . "</tr>";
+                        . "<td>" . $row['commentaire'] . "</td>"
+                        . "<td><a class='supprimer' onclick='return validedelete();'href='?target_link=VIEWSYNOPSIS&action=DELETE&id=" . $row['id'] . "'>Supprimer</a></td>"
+                        . "</tr>";
                      $i++;
                     }
                    
