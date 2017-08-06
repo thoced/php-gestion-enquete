@@ -11,7 +11,12 @@
  *
  * @author Thonon
  */
+namespace App\Recherche;
+
 require_once './App/Controller/BaseController.php';
+
+use App\DbConnect;
+use App\Controller\BaseController;
 
 class RechercheCtrl extends BaseController{
     //put your code here
