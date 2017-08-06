@@ -2,6 +2,15 @@
   <head>
     <meta content="text/html; charset=windows-1252" http-equiv="content-type">
     <link rel="stylesheet" href="./Style/.AppCss.css">
+    <script>
+function mouseOver(tr){
+    tr.style.backgroundColor = "#5dade2"
+}
+
+function mouseOut(tr){
+    tr.style.backgroundColor = null;
+}
+    </script>
   </head>
   <body>
       <br>
@@ -16,7 +25,7 @@
     </tr>
     <?php while($folder = $req->fetch())
     { 
-        echo  "<tr>"
+        echo  "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
             . "<td>" . $folder[0]. "</td>" // 0 au lieu de id car la requete récupère plusieurs types d'id
             . "<td>" . $folder['nom'] . "</td>"
             . "<td>" . $folder['commentaire']. "</td>"
