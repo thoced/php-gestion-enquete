@@ -12,6 +12,7 @@ require_once './App/Folder/FolderCtrl.php';
 require_once './App/Documents/DocumentCtrl.php';
 require_once './App/Annexe/AnnexeSelectCtrl.php';
 require_once './App/Contenu/ContenuCtrl.php';
+require_once './App/Recherche/RechercheCtrl.php';
 require_once './App/Exception/ExceptionCtrl.php';
 require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
@@ -65,6 +66,12 @@ if(isset($_SESSION['LOGIN']))
     {
     switch($target)
       {
+      
+      case 'VIEWRECHERCHES':
+                        new RechercheCtrl();
+                        die;
+                        break;
+        
       case 'VIEWCONTENU':
                         new ContenuCtrl();
                         die;
