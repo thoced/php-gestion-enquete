@@ -21,6 +21,18 @@ class SynopsisCtrl extends BaseController{
     //put your code here
     public function delete($login, $setting, $action, $id, $update) {
         
+        if(!isset($id) || !is_numeric($id)){
+            throw new \Exception("Erreur dans la variable id, une erreur est survenue");
+        }
+
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("delete from t_synopsis where id = :id AND ref_id_folders = :ref_id_folders");
+        if($req->execute(array("id" => $id,
+                               "ref_id_folders" => $setting->getIdFolderSelected())) == false){
+            throw new \Exception("Erreur dans la requête de suppression du synopsis, une erreur est survenue");
+        }
+        
+        $this->show($login, $setting, $action, $id, $update);
     }
 
     public function insert($login, $setting, $action, $id, $update) {
@@ -36,7 +48,7 @@ class SynopsisCtrl extends BaseController{
         if(strlen($date) == 0){
             $date = null;
         }
-
+        
         $db = DbConnect::getInstance();
         $req = $db->_dbb->prepare("insert into t_synopsis (date,commentaire,ref_id_folders) values (:date,:commentaire,:ref_id_folders)");
         if($req->execute(array("date" => $date,
