@@ -28,6 +28,7 @@ use App\Main\MainCtrl;
 use App\Folder\FolderCtrl;
 use App\Personne\PersonneCtrl;
 use App\Annexe\AnnexeSelectCtrl;
+use App\Recherche\RechercheCtrl;
 
 
 
