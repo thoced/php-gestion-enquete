@@ -12,7 +12,7 @@ and open the template in the editor.
     position:absolute;
     left:3%;
     bottom:10%;
-    color:  #d6dbdf;
+    color:   #3284d0 ;
 }
 
 .login{
@@ -23,9 +23,11 @@ and open the template in the editor.
     bottom: 50%;
     background-color: #3284d0;
     border-radius: 6px;
-    border-width: 6px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
     border-color: #88b9e6;
     border-style: solid;
+    background-image:linear-gradient(#d4e6f1,  #a9cce3 );
     
    
 }
@@ -78,14 +80,18 @@ body{
   position:  relative; 
   left:5%;
   border-radius: 6px;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px;
   cursor: Pointer;
   border-color : blue;
-  border-width: 6px;
-  border-style:  solid;
+  border-width: 1px;
+  border-style:  groove;
+  background-image:linear-gradient(#d4e6f1,  #a9cce3 );
 }
 
 .contenuArea{
-    height:65%;
+    height:85%;
+    overflow: hidden;
 }
 
 .listAnnexe{
