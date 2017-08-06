@@ -90,7 +90,8 @@ function verifDelete()
     </script>
   </head>
  
-  <body>&nbsp; <br>
+  <body>
+       <h1 style="text-align: center;">Gestion des personnes</h1>
     <br>
     <br>
   <div class="list">

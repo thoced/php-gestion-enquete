@@ -89,9 +89,8 @@ function verifDelete()
     </script>
   </head>
  
-  <body>&nbsp; <br>
-    <br>
-    <br>
+  <body>
+  <h1 style="text-align: center;">Gestion des documents</h1>
   <div class="list">
     <table width="95%" align="center">
         <tr>

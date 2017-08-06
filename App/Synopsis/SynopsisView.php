@@ -7,11 +7,11 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="./Style/.AppCss.css"> 
         <link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.css">
+        <link rel="stylesheet" href="./Style/.AppCss.css"> 
          <script src="jquery-3.2.1.js"></script>
          <script src="./jquery-ui-1.12.1/jquery-ui.js"></script>
-         <script>
+         <script  type="application/x-javascript">
              $(function() {
 $( "#datepicker" ).datepicker({
     altField: "#datepicker",
@@ -36,8 +36,9 @@ $( "#datepicker" ).datepicker({
     </head>
     <body>
         <h1 style="text-align: center;">Suivi chronologique de l'enquête</h1>
+        <br>
         <div class="list">
-            <table width="100%">
+            <table width="90%">
                 <tr>
                     <td>Num:</td>
                     <td>Date</td>
@@ -60,7 +61,7 @@ $( "#datepicker" ).datepicker({
         <br>
         <div class="form">
             <form action="?target_link=VIEWSYNOPSIS&action=INSERT" method="POST" name="form_synopsis">
-                <table width="100%">
+                <table width="90%">
                      <tr>
                         <td>Date:</td>
                         <td><input name="date" id="datepicker"></td>

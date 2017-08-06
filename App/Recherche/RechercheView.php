@@ -11,6 +11,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <h1 style="text-align: center;">Module de recherche de contenu</h1>
         <div class="form">
             <form action="?target_link=VIEWRECHERCHES&action=SELECT" method="POST" name="form_recherche_contenu">
             <table style="width:100%;">

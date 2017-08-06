@@ -11,7 +11,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        
+         <h1 style="text-align: center;">Résultat des recherches</h1>
         <div class="list">
             <table style="width: 100%;">
             <?php

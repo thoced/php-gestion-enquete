@@ -13,6 +13,7 @@ function mouseOut(tr){
     </script>
   </head>
   <body>
+       <h1 style="text-align: center;">Selection d'un dossier</h1>
       <br>
     <br>
     <br>
