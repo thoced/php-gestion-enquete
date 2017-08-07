@@ -19,6 +19,27 @@ use App\Controller\BaseController;
 
 class SynopsisCtrl extends BaseController{
     //put your code here
+    
+    public function generer(){
+         require_once './App/lib/vendor/autoload.php';
+
+            // Creating the new document...
+            $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+            // Adding an empty Section to the document...
+            $section = $phpWord->addSection();
+            // Adding Text element to the Section having font styled by default...
+            $section->addText(
+                '"Learn from yesterday, live for today, hope for tomorrow. '
+                    . 'The important thing is not to stop questioning." '
+                    . '(Albert Einstein)'
+            );
+
+            // Saving the document as OOXML file...
+            $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+            $objWriter->save('helloWorld.docx');
+    }
+    
     public function delete($login, $setting, $action, $id, $update) {
         
         if(!isset($id) || !is_numeric($id)){
@@ -80,7 +101,7 @@ class SynopsisCtrl extends BaseController{
     }
 
     public function update($login, $setting, $action, $id, $update) {
-        
+       
     }
 
 }
