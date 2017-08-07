@@ -95,7 +95,7 @@ function validedelete(){
                 </table>
             </form>
         </div>
-        
         <a class="return" href="?target_link=MAINVIEW">Retour</a>
+        <a href="?target_link=VIEWSYNOPSIS&action=GENERER">Generer</a>
     </body>
 </html>
