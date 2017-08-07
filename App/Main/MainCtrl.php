@@ -23,8 +23,10 @@ class MainCtrl extends BaseController{
     public function show($login,$setting,$action,$id,$update){
         $user = "";
         $folder = "Aucun dossier sélectionné";
-        if(isset($login))
-            $user = $login->login;
+        if(isset($login)){
+        $user = $login->login;
+        $nom = $login->nom;
+        }
         if(isset($setting))
             $folder = $setting->getNomFolderSelected();
         

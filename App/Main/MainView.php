@@ -11,7 +11,11 @@
     <div id="loginInfo">Utilisateur :
       <?php echo $user;?> <br>
       Dossier en cours:
-      <?php echo $folder;?> </div>
+      <?php echo $folder;?><br>
+      Nom utilisateur:
+      <?php echo $nom;?>
+      
+    </div>
     <p><a href="?target_link=LOGOUT"></a><br>
     </p>
     <br>

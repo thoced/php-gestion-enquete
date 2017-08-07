@@ -84,7 +84,7 @@ if(!isset($_SESSION['LOGIN']))
 
 if(isset($_SESSION['LOGIN']))
  {
-    $login = new LoginModel('','');
+    $login = new LoginModel('','','');
     $login->unserialize($_SESSION['LOGIN']);
     
     $setting = new SettingModel();
@@ -168,7 +168,7 @@ if(isset($_SESSION['LOGIN']))
                     $idUser = $db->checkLogin($login,$passwd);
                     if($idUser !== false){
                         // le login est ok
-                        $logModel = new LoginModel($login, $passwd);
+                        $logModel = new LoginModel($login, $passwd,"cedric");
                         $logModel->isLoged = true;
                         $logModel->idUser = $idUser;
                         // on place le tout dans la session

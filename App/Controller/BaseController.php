@@ -33,7 +33,7 @@ abstract class BaseController
     public function __construct() 
     {
         // pompe à récupération d'information
-        $login = new LoginModel("", "");
+        $login = new LoginModel("","","");
         $setting = new SettingModel();
         $action = null;
         $id = null;

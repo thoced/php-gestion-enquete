@@ -100,7 +100,7 @@ body{
 }
 
 .contenuArea{
-    height:85%;
+    height:75%;
     overflow: hidden;
 }
 
@@ -124,21 +124,14 @@ body{
   float: right;
   clear: right;
   position: static;
-  background-color: #9999ff;
-  border-radius: 0px;
+  background-color: #0099ff;
+  border-radius: 6px;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px;
   font-weight: bold;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-top-width: 2px;
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-  border-top-color: #ccccff;
-  border-right-color: #ccccff;
-  border-bottom-color: #ccccff;
-  border-left-color: #ccccff;
+  background-image:linear-gradient(#d4e6f1,  #a9cce3 );
+  border-style:  groove;
+ 
 }
 
 
