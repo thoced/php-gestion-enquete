@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.user{
+    position: absolute;
+    bottom: 10%;
+    left:40%;
+}
+
 .copyright{
     position:absolute;
     left:3%;
@@ -21,6 +27,7 @@ and open the template in the editor.
     right: 25%;
     top: 40%;
     bottom: 50%;
+    height: 20%;
     background-color: #3284d0;
     border-radius: 6px;
     border-bottom-right-radius: 1px;
@@ -112,7 +119,7 @@ body{
   font-size: 30px;
 }
 
-#login {
+#loginInfo {
   display: block;
   float: right;
   clear: right;
