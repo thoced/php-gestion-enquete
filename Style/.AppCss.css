@@ -58,8 +58,11 @@ and open the template in the editor.
 }
 
 .return{
-    position: fixed;
+    position: absolute;
     bottom: 10%;
+    left:50%;
+    font-size: 24px;
+    color: red;
 }
 
 table { 
@@ -69,7 +72,7 @@ table {
 }
 
 body{
-    background-color:   #ccd1d1    ;
+    background-color: #ccd1d1;
 }
 
 .list, .listAnnexe, .form, .contenuArea {
