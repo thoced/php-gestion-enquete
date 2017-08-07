@@ -5,9 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+namespace App;
 
 require_once 'DbConnect.php';
 require_once './App/Login/LoginModel.php';
+require_once './App/Login/NewUserCtrl.php';
 require_once './App/Personne/PersonneCtrl.php';
 require_once './App/Folder/FolderCtrl.php';
 require_once './App/Documents/DocumentCtrl.php';
@@ -32,6 +34,7 @@ use App\Annexe\AnnexeSelectCtrl;
 use App\Recherche\RechercheCtrl;
 use App\Exception\ExceptionCtrl;
 use App\Synopsis\SynopsisCtrl;
+use App\Login\NewUserCtrl;
 
 
 if(!isset($_SESSION))
@@ -45,14 +48,31 @@ if(!isset($_SESSION['LOGIN']))
     if(isset($_GET['target_link']))
     {
         $target = $_GET['target_link'];
+        
+        
+        try
+        {
         switch($target)
         {
             case 'CHECKLOGIN':if(IsLoged()){
                 new MainCtrl();
                 die;
-                break;
-            }
+                break; 
+                
+            }break;
+                
+             case 'NEWUSER': 
+                                new NewUserCtrl();
+                              die;
+                              break;
+                                
+           
+           
         }
+        }catch(\Exception $e){
+         new ExceptionCtrl($e);
+        die;}
+            
     }
    
     require './App/Login/LoginCtrl.php';
@@ -127,7 +147,7 @@ if(isset($_SESSION['LOGIN']))
                     
       }
     }
-    catch(Exception $e){
+    catch(\Exception $e){
      new ExceptionCtrl($e);
      die;
     }
