@@ -30,6 +30,8 @@ abstract class BaseController
     
     abstract public function select($login,$setting,$action,$id,$update);
     
+    protected $login,$setting,$action,$id,$update;
+    
     public function __construct() 
     {
         // pompe à récupération d'information
@@ -38,26 +40,34 @@ abstract class BaseController
         $action = null;
         $id = null;
         $update = array();
-        
+       
         if(isset($_SESSION['LOGIN'])){
             $login->unserialize($_SESSION['LOGIN']);
+            $this->login = $login;
         }
         
         if(isset($_SESSION['SETTING'])){
             $setting->unserialize($_SESSION['SETTING']);
+            $this->setting = $setting;
         }
         
         if(isset($_GET['action'])){
             $action = $_GET['action'];
+            $this->action = $action;
         }
         
         if(isset($_GET['id'])){
             $id = $_GET['id'];
+            $this->id = $id;
         }
         
         if(isset($_POST)){
             $update = $_POST;
+            $this->update = $update;
+            
         }
+        
+        
         
         switch($action)
         {
@@ -69,11 +79,25 @@ abstract class BaseController
                             break;
             case 'SELECT':  $this->select($login, $setting, $action, $id, $update);
                             break;
-            default      :  $this->show($login,$setting,$action,$id,$update);
+            default      :  
+                            // appel à la reflectionclass pour déterminer si l'objet possède une methode passé en parametre de l'url
+                            $this->reflection($action);
+                            $this->show($login,$setting,$action,$id,$update);
                             break;
         }
         // appel au methode run des enfants
        // $this->run($login,$setting,$action,$id,$update);
+        
+    }
+    
+    protected function reflection($action){
+        // reflexion
+        $reflexion = new \ReflectionClass($this);
+        $nameMethode = strtolower($action);
+        if($reflexion->hasMethod($nameMethode)){
+            $method = $reflexion->getMethod($nameMethode);
+            $method->invoke($this);
+        }
     }
     
     
