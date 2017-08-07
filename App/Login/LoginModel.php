@@ -28,10 +28,11 @@ class LoginModel implements \Serializable
    public $nom;
    
     
-   public function __construct($login,$passwd) 
+   public function __construct($login,$passwd,$nom) 
    {
       $this->login = $login;
       $this->passwd = $passwd;
+      $this->nom = $nom;
        
    }
       
