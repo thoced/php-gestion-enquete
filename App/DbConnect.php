@@ -44,15 +44,19 @@ class DbConnect
     {
         if($this->_dbb !== null)
        {
-           $req = $this->_dbb->prepare('select * from t_users where login = :login AND password = :passwd');
+            // codage du password
+           $hash = password_hash($passwd, PASSWORD_BCRYPT); 
+            
+           $req = $this->_dbb->prepare('select * from t_users where login = :login');
            $req->execute(array(
-               'login' => $login,
-               'passwd' => $passwd
+               'login' => $login
            ));
            
            while($ret = $req->fetch())
            {
-               return $ret['id'];
+               if(password_verify($passwd, $ret['password'])){
+                   return $ret['id'];
+               }
            }
           
                return false;
