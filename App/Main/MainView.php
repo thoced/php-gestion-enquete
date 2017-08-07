@@ -8,7 +8,7 @@
   <body>
     <p id="Title">Gestion Enquête Locale</p>
     <p><a href="?target_link=LOGOUT">Logout</a></p>
-    <div id="login">Utilisateur :
+    <div id="loginInfo">Utilisateur :
       <?php echo $user;?> <br>
       Dossier en cours:
       <?php echo $folder;?> </div>
