@@ -86,7 +86,7 @@ function validedelete(){
                     </tr>
                     <tr>
                         <td>Commentaire:</td>
-                        <td><input name="commentaire" type="text" maxlength="64" size="64"></td>
+                        <td><textarea name="commentaire" cols="64" rows="8"></textarea></td>
                     </tr>
                     <tr>
                         <td></td>
