@@ -25,6 +25,9 @@
             <td><input maxlength="64" size="64" name="passwd" type="password"><br>
             </td>
           </tr>
+          <tr>
+               <p><a class="user" href="?target_link=NEWUSER">Nouvel utilisateur ?</a>
+          </tr>
         </tbody>
       </table>
       <input formmethod="post" name="submit" type="submit" value="Se connecter">
@@ -32,3 +35,4 @@
     </div>
     <p class="copyright">Developpé par Thonon Cédric.</p>
 </body></html>
+   
