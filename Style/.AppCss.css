@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.rapport{
+    position: relative;
+    left: 5%;
+    top: inherit;
+ 
+}
+
 .user{
     position: absolute;
     bottom: 10%;

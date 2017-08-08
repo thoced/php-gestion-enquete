@@ -96,6 +96,6 @@ function validedelete(){
             </form>
         </div>
         <a class="return" href="?target_link=MAINVIEW">Retour</a>
-        <a href="?target_link=VIEWSYNOPSIS&action=GENERER">Generer</a>
+        <a class="rapport" href="?target_link=VIEWSYNOPSIS&action=GENERER">Generer le rapport</a>
     </body>
 </html>
