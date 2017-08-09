@@ -26,24 +26,56 @@ class SynopsisCtrl extends BaseController{
              $db = DbConnect::getInstance();
              $req = $db->_dbb->prepare("select * from t_synopsis where ref_id_folders = :ref_id_folders");
              if($req->execute(array("ref_id_folders" => $this->setting->getIdFolderSelected())) == false){
-            throw new \Exception("Erreur lors de la génénation du rappport");
-        }
+                        throw new \Exception("Erreur lors de la génénation du rappport");
+                    }
+        
+             $db = DbConnect::getInstance();
+             $reqDos = $db->_dbb->prepare("select * from t_folders where id = :id");
+             $reqDos->execute(array("id" => $this->setting->getIdFolderSelected()));
             
+             $db = DbConnect::getInstance();
+             $reqFait = $db->_dbb->prepare("select * from t_faits INNER JOIN t_listfaits ON t_faits.ref_id_listfaits = t_listfaits.id WHERE t_faits.ref_id_folders = :id");
+             $reqFait->execute(array("id" => $this->setting->getIdFolderSelected()));
+             
+             $db = DbConnect::getInstance();
+             $reqPers = $db->_dbb->prepare("select * from t_personne where ref_id_folders = :id");
+             $reqPers->execute(array("id" => $this->setting->getIdFolderSelected()));
+             
             // Creating the new document...
             $phpWord = new \PhpOffice\PhpWord\PhpWord();
                      
             $section = $phpWord->addSection();
             $header = $section->addHeader();
-            $header->addText("Dossier: " . $this->setting->getNomFolderSelected(),
+            $header->addText("Dossier: " . $this->setting->getNomFolderSelected() . " - SLR ZP Seraing/Neupré",
                     array('name' => 'Tahoma', 'size' =>10));
             
             $footer = $section->addFooter();
-            $footer->addText("Dossier: " . $this->setting->getNomFolderSelected(),
+            $footer->addText("Dossier: " . $this->setting->getNomFolderSelected() . " - SLR ZP Seraing/Neupré",
                     array('name' => 'Tahoma', 'size' =>10));
             
             $section->addText("Rapport dossier: " . $this->setting->getNomFolderSelected(),
                      array('name' => 'Tahoma', 'size' =>22));
-            $section->addTextBreak(2);
+            $section->addTextBreak(1);
+            // info du dossier
+            $dos = $reqDos->fetch();
+            $section->addText("Information: " . $dos['commentaire']);
+            $section->addTextBreak(1);
+            // num pv
+            while($pv = $reqFait->fetch()){
+                $section->addText("Pv: " . $pv['pv'] . " (" . $pv['fait'] . ")");
+
+            }
+            $section->addTextBreak(1);
+            // personne physique
+             $section->addText("Personnes physiques:");
+             $section->addTextBreak(1);
+             while($pers = $reqPers->fetch()){
+                $section->addText("(" . $pers['qualite'] . ") " . $pers['nom'] . " " . $pers['prenom'] . " " .$pers['date_naissance']);
+
+            }
+            $section->addTextBreak(1);
+                    
+
             $tableStyle = array("borderSize" => 1);
             $table = $section->addTable($tableStyle);
             while($row = $req->fetch()){

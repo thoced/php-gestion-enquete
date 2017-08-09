@@ -24,15 +24,20 @@ function mouseOut(tr){
         <td>Nom</td>
         <td>Commentaire</td>
     </tr>
-    <?php while($folder = $req->fetch())
+
+    <?php 
+    $i =1;
+    while($folder = $req->fetch())
     { 
         echo  "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
-            . "<td>" . $folder[0]. "</td>" // 0 au lieu de id car la requete récupère plusieurs types d'id
+            . "<td>" . $i. "</td>" // 0 au lieu de id car la requete récupère plusieurs types d'id
             . "<td>" . $folder['nom'] . "</td>"
             . "<td>" . $folder['commentaire']. "</td>"
-                . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=SELECT&id=" . $folder[0]."'>Cliquez ici pour sélectionner</a>"   
+                . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=SELECT&id=" . $folder[0]."'>Cliquez ici pour sélectionner</a>"
+                . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=FAITS&id=" . $folder[0]."'>Faits</a>"   
             . "</tr>";
-        
+        $i++;
+
     }
 ?>
 </table>

@@ -22,6 +22,105 @@ use App\DbConnect;
 class FolderCtrl extends BaseController{
     //put your code here
     
+    public function addfaits(){
+        if(!isset($this->update)){
+             throw new \Exception("Erreur dans la variable update, une erreur est survenue");
+        }
+        
+        if(!isset($this->update['fait'])){
+             throw new \Exception("Erreur dans la variable update, il manque la valeur fait");
+        }
+        if(!isset($this->update['ref_id_folders'])){
+             throw new \Exception("Erreur dans la variable update, il manque la valeur ref_id_folders");
+        }
+        if(!isset($this->update['date_basse'])){
+             throw new \Exception("Erreur dans la variable update, il manque la valeur date_basse");
+        }
+        if(!isset($this->update['date_haute'])){
+             throw new \Exception("Erreur dans la variable update, il manque la valeur date_haute");
+        }
+        if(!isset($this->update['pv'])){
+             throw new \Exception("Erreur dans la variable update, il manque la valeur pv");
+        }
+        
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("insert into t_faits (ref_id_listfaits,ref_id_folders,date_basse,date_haute,pv) VALUES "
+                                . "(:ref_id_listfaits,:ref_id_folders,:date_basse,:date_haute,:pv)");
+
+        $date_basse = null;
+        $date_haute = null;
+        if(strlen($this->update['date_basse']) != 0){
+            $date_basse = $this->update['date_basse'];
+        }
+        if(strlen($this->update['date_haute']) != 0){
+            $date_haute = $this->update['date_haute'];
+        }
+        
+
+        if($req->execute(array("ref_id_listfaits" => $this->update['fait'],
+                               "ref_id_folders" => $this->update['ref_id_folders'],
+                               "date_basse" => $date_basse,
+                               "date_haute" => $date_haute,
+                               "pv" => $this->update['pv'])) == false){
+            throw new \Exception("Erreur dans l'ajout  du fait, une erreur est survenue");
+        }
+        
+        $this->id = $this->update['ref_id_folders'];
+        $this->faits();
+    }
+    
+    public function delfaits(){
+        
+      if(!isset($this->id)){
+          throw new \Exception("Erreur dans la variable id, un erreur est survenue");
+      }
+      
+      if(!is_numeric($this->id)){
+          throw new \Exception("La variable id n'est pas numérique, un erreur est survenue");
+      }
+      
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("delete from t_faits where id = :id");
+        if($req->execute(array("id" => $this->id)) == false){
+            throw new \Exception("Erreur dans la suppression du fait, une erreur est survenue");
+        }
+        
+        if(isset($_GET['ref_id_folders'])){
+               $this->id = $_GET['ref_id_folders'];
+        }
+        
+        $this->faits();
+    }
+    
+    public function faits(){
+        
+
+      if(!isset($this->id)){
+          throw new \Exception("Erreur dans la variable id, un erreur est survenue");
+      }
+      
+      if(!is_numeric($this->id)){
+          throw new \Exception("La variable id n'est pas numérique, un erreur est survenue");
+      }
+      
+       $ref_id_folders = $this->id;
+      
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("select * from t_faits INNER JOIN t_listfaits ON t_faits.ref_id_listfaits = t_listfaits.id where t_faits.ref_id_folders = :ref_id_folders");
+        if($req->execute(array("ref_id_folders" => $this->id)) == false){
+            throw new \Exception("Erreur dans la sélection des faits, une erreur est survenue");
+        }
+        
+        $db = DbConnect::getInstance();
+        $reqListFait = $db->_dbb->prepare("select * from t_listfaits");
+        if($reqListFait->execute() == false){
+            throw new \Exception("Erreur dans la sélection de la liste des faits, une erreur est survenue");
+        }
+     
+        // appel à la vue
+        require './App/Folder/FaitsView.php';
+    }
+    
     public function show($login,$setting,$action,$id,$update)
     {
         if(!isset($login)){
