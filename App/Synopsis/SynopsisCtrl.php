@@ -23,6 +23,12 @@ class SynopsisCtrl extends BaseController{
     public function generer(){
             require_once './App/lib/vendor/autoload.php';
 
+            // code de vérification, il faut une session et un dossier en cours
+             if(!isset($this->setting) || is_null($this->setting)){
+                 throw new \Exception("Erreur lors de la génénation du rappport, un dossier doit d'abord être sélectionné");
+               
+             }
+            
              $db = DbConnect::getInstance();
              $req = $db->_dbb->prepare("select * from t_synopsis where ref_id_folders = :ref_id_folders");
              if($req->execute(array("ref_id_folders" => $this->setting->getIdFolderSelected())) == false){
