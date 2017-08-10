@@ -37,6 +37,16 @@ $( ".datepicker" ).datepicker({
     
 });
 
+function verifDelete()
+{
+    if(confirm("Etes vous sûr de vouloir supprimer cet élément ?")){
+        return true;
+    }
+    else {
+        return false;
+        }
+}
+
     </script>
   </head>
   <body>
@@ -63,7 +73,7 @@ $( ".datepicker" ).datepicker({
             . "<td>" . $row['date_basse']. "</td>"
             . "<td>" . $row['date_haute']. "</td>"
             . "<td>" . $row['pv']. "</td>"
-            . "<td><a class='supprimer' href='?target_link=VIEWDOSSIERS&action=DELFAITS&id=" . $row[0] . "&ref_id_folders=" . $row['ref_id_folders'] ."'>Supprimer</a></td>"
+            . "<td><a onclick='return verifDelete();'class='supprimer' href='?target_link=VIEWDOSSIERS&action=DELFAITS&id=" . $row[0] . "&ref_id_folders=" . $row['ref_id_folders'] ."'>Supprimer</a></td>"
             . "</tr>";
         $i++;
     }
