@@ -24,7 +24,7 @@ class DbConnect
     {
         $this->_dbb = new \PDO('mysql:host=localhost;dbname=db_gel;charset=utf8', 'gel', 'gel');
     }
-      
+    
     public static function getInstance()
     {
 
