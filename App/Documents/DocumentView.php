@@ -41,8 +41,10 @@ function updateScriptDocument(tr,id){
         input = document.getElementById("titre");
         input.setAttributeNode(att);
         
+        var com = listTd[1].getElementsByClassName("infoBulle");
         var att = document.createAttribute("value");
-        att.value = listTd[1].innerHTML;
+        att.value = com[0].innerHTML;
+        
         input = document.getElementById("commentaire");
         input.setAttributeNode(att);
         
