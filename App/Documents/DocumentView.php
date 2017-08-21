@@ -104,7 +104,7 @@ function verifDelete()
         while($row = $req->fetch()){
        echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScriptDocument(this," . $row[0]. ");'>"
     . "<td>" . $row['titre'] . '</td>'
-               . '<td>' . $row['commentaire'] . '</td>'
+               . '<td><a href="#">' . substr($row['commentaire'],0,16) . ' ...<span class="infoBulle">' . $row['commentaire'] . '</span></a></td>'
                . '<td>' . $row['date'] . '</td>'
                . '<td>' . $row['reference'] . '</td>'
                . '<td>' . $row['type'] . '</td>'

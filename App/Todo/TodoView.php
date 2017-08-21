@@ -80,7 +80,7 @@ function verifForm(){
                         echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
                         . "<td>" . $i . ".</td>"
                         . "<td>" . $row['libelle'] . "</td>"
-                        . "<td>" . $row['commentaire'] . "</td>"
+                        . "<td><a href='#'>" . substr($row['commentaire'], 0,16) . " ...<span class='infoBulle'>" . $row['commentaire'] . "</span></a></td>"
                         . "<td>" . $row['date_creation'] . "</td>"
                         . "<td>" . $row['date_rappel'] . "</td>"
                         . "<td><a class='supprimer' onclick='return validedelete();'href='?target_link=VIEWTODO&action=DELETE&id=" . $row['id'] . "'>Supprimer</a></td>"
