@@ -13,7 +13,7 @@ and open the template in the editor.
      margin-top:  0px;
      margin-left: 0px;
      color:#09c;
-     background:rgba(0,0,0,.9);
+     background:#000000cf;
      padding:15px;
      border-radius:3px;
      box-shadow:0 0 2px rgba(0,0,0,.5);
@@ -26,7 +26,7 @@ and open the template in the editor.
 a:hover span, a:focus span{
      transform:scale(1.2) rotate(0); 
      opacity:1;
-      z-index: 5;
+     z-index: 5;
 }
 
 
