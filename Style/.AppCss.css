@@ -8,6 +8,33 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+ .infoBulle{
+     position:   fixed;    
+     margin-top:  0px;
+     margin-left: 0px;
+     color:#09c;
+     background:rgba(0,0,0,.9);
+     padding:15px;
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);
+     transform:scale(0) rotate(-12deg);
+     transition:all .25s;
+     opacity:0;
+     z-index: 5;
+}
+
+a:hover span, a:focus span{
+     transform:scale(1.2) rotate(0); 
+     opacity:1;
+      z-index: 5;
+}
+
+
+a:hover,a:focus{
+     background:rgba(0,0,0,.4);
+     box-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+
 .rapport{
     position: relative;
     left: 5%;
@@ -85,6 +112,7 @@ table {
 
 body{
     background-color: wheat;
+    z-index: 0;
 }
 
 .list, .listAnnexe, .form, .contenuArea {
@@ -100,6 +128,7 @@ body{
   border-width: 4px;
   border-style:   solid;
   background-image:linear-gradient(azure,  ghostwhite );
+  z-index:1;
 }
 
 .contenuArea{
@@ -114,6 +143,7 @@ body{
 
 .form{
      cursor:  default;  
+     z-index: 0;
 }
 
 #Title {
