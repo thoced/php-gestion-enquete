@@ -48,6 +48,17 @@ function validedelete(){
         return false;
         }
 }
+
+function verifForm(){
+    var date = document.getElementsByName("date_creation");
+    if(date[0].value.length < 10){
+        alert('Une date de création doit obligatoirement être fournie')
+        return false;
+    }
+    
+    return true;
+    
+}
          </script>
         <title></title>
     </head>
@@ -109,7 +120,7 @@ function validedelete(){
                     </tr>
                      <tr>
                         <td></td>
-                        <td><input type="submit" value="Enregistrer"</td>
+                        <td><input type="submit" value="Enregistrer" onclick="return verifForm();"</td>
                     </tr>
                     
                 </table>
