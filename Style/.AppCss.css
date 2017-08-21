@@ -18,7 +18,7 @@ and open the template in the editor.
      border-radius:3px;
      box-shadow:0 0 2px rgba(0,0,0,.5);
      transform:scale(0) rotate(-12deg);
-     transition:all .25s;
+     transition:all .5s;
      opacity:0;
      z-index: 5;
 }
@@ -102,7 +102,7 @@ a:hover,a:focus{
     left:50%;
     font-size: 24px;
     color: red;
-}
+    }
 
 table { 
     border-collapse: collapse; 
@@ -156,13 +156,18 @@ body{
   display: block;
   float: right;
   clear: right;
-  position: static;
-  background-color: #0099ff;
+  position: absolute;
+  background-color: #ff0000;
   border-radius: 6px;
   border-color : lightblue;
   border-width: 4px;
   border-style:   solid;
-  background-image:linear-gradient(azure,  ghostwhite );
+  background-image:linear-gradient(slategray,  ghostwhite );
+  
+  width: 95%;
+  height: 10%;
+  top:80%;  
+  left:2.5%;
  
 }
 
