@@ -40,7 +40,8 @@
         </tr>
         <tr>
             <td style="width:25%;">Synopsis<br><br>
-               <a class="contenu" href="?target_link=VIEWSYNOPSIS">Suivi de l'enquêtes</a>   
+                <a class="contenu" href="?target_link=VIEWSYNOPSIS">Suivi de l'enquêtes</a><br>
+                <a class="contenu" href="?target_link=VIEWTODO">Planification - Tâches à réaliser</a>   
             </td>
         </tr>
       </tbody>

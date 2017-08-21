@@ -173,7 +173,7 @@ if(isset($_SESSION['LOGIN']))
                     $idUser = $db->checkLogin($login,$passwd);
                     if($idUser !== false){
                         // le login est ok
-                        $logModel = new LoginModel($login, $passwd,"cedric");
+                        $logModel = new LoginModel($login, $passwd,"");
                         $logModel->isLoged = true;
                         $logModel->idUser = $idUser;
                         // on place le tout dans la session
