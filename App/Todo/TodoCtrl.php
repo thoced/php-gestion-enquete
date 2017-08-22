@@ -102,8 +102,11 @@ class TodoCtrl extends BaseController{
 
     public function update($login, $setting, $action, $id, $update) {
         
+        if(!isset($setting))
+            return; // pas d'exeption car appelé par AJAX
+        
         if(!isset($_GET['checked'])){
-             throw new \Exception("valeur GET checked manquante dans l'url");
+            return; // pas d'exeption car appelé par AJAX
         }
         $checked = $_GET['checked'];
         if(strcmp(trim($checked),"true") == 0)
