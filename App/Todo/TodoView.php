@@ -59,6 +59,27 @@ function verifForm(){
     return true;
     
 }
+
+function doneClick(checkedBox,id){
+   
+   if(!confirm("Vous êtes sur le point de modifier le statut de cette tâche, êtes-vous sûr de vouloir le modifier ?")){
+       return false;
+   }
+   
+   if(checkedBox.checked == true){
+       // le checkedBox est checked
+       var xhr = new XMLHttpRequest();
+       xhr.open("GET", "index.php?target_link=VIEWTODO&action=UPDATE&id=" + id + "&checked=true", true);
+       xhr.send(null);
+   }
+   else{
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "index.php?target_link=VIEWTODO&action=UPDATE&id=" + id + "&checked=false", true);
+        xhr.send(null);
+    } 
+    
+    return true;
+}
          </script>
         <title></title>
     </head>
@@ -73,16 +94,23 @@ function verifForm(){
                     <td>Commentaire:</td>
                     <td>Date de création:</td>
                     <td>Date de rappel:</td>
+                    <td>Terminé:</td>
                 </tr>
                 <?php
                     $i = 1;
                     while($row = $req->fetch()){
+                        
+                        $checked = "";
+                        if($row['statut'] == 1)
+                            $checked = "checked";
+                        
                         echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
                         . "<td>" . $i . ".</td>"
                         . "<td>" . $row['libelle'] . "</td>"
                         . "<td><a href='#'>" . substr($row['commentaire'], 0,16) . " ...<span class='infoBulle'>" . $row['commentaire'] . "</span></a></td>"
                         . "<td>" . $row['date_creation'] . "</td>"
                         . "<td>" . $row['date_rappel'] . "</td>"
+                        . "<td><input " . $checked . " type='checkbox' name='done' onclick='return doneClick(this," . $row['id'] . ");'></td>"
                         . "<td><a class='supprimer' onclick='return validedelete();'href='?target_link=VIEWTODO&action=DELETE&id=" . $row['id'] . "'>Supprimer</a></td>"
                         . "</tr>";
                      $i++;
@@ -120,7 +148,7 @@ function verifForm(){
                     </tr>
                      <tr>
                         <td></td>
-                        <td><input type="submit" value="Enregistrer" onclick="return verifForm();"</td>
+                        <td><input type="submit" value="Enregistrer" onclick="return verifForm();"></td>
                     </tr>
                     
                 </table>

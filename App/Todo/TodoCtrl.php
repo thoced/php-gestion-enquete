@@ -102,6 +102,24 @@ class TodoCtrl extends BaseController{
 
     public function update($login, $setting, $action, $id, $update) {
         
+        if(!isset($_GET['checked'])){
+             throw new \Exception("valeur GET checked manquante dans l'url");
+        }
+        $checked = $_GET['checked'];
+        if(strcmp(trim($checked),"true") == 0)
+            $check = 1;
+        else
+            $check = 0;
+            
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("update t_todo set statut = :checked where id = :id AND ref_id_folders = :ref_id_folders");
+            
+        $req->execute(array("id" => $id,
+                            "checked" => $check,
+                            "ref_id_folders" => $setting->getIdFolderSelected()));
+        
+        
+        return $checked;
     }
 
 }
