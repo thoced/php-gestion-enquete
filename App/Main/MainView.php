@@ -25,25 +25,34 @@
     <table style="width: 100%" border="0">
       <tbody>
         <tr>
-          <td style="width: 25%;">Gestion des Dossiers<br>
-            <br>
-            <a class="contenu" href="?target_link=VIEWDOSSIERS">Voir les dossiers</a><br>
-            <a class="contenu" href="?target_link=VIEWDOSSIERS&action=SHOWNEWFOLDER">Créer un dossier</a>
+          <td style="width: 25%;">Gestion des Dossiers
+              <ul>
+                  <li><a class="contenu" href="?target_link=VIEWDOSSIERS"><span class="menu">Voir les dossiers</span></a></li>
+                  <li><a class="contenu" href="?target_link=VIEWDOSSIERS&action=SHOWNEWFOLDER"><span class="menu">Créer un dossier</span></a></li>
+              </ul>
           </td>
-          <td style="width: 25%;">Gestion des Personnes physique<br>
-            <br>
-            <a class="contenu" href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
-          <td style="width:25%;">Gestion des documents<br><br>
-              <a class="contenu" href="?target_link=VIEWDOCUMENTS">Voir les documents</a>
+          <td style="width: 25%;">Gestion des Personnes physique
+              <ul>
+                  <li><a class="contenu" href="?target_link=VIEWPERSONNES"><span class="menu">Voir les personnes</span></a></li>
+             </ul>
           </td>
-          <td style="width:25%;">Recherches<br><br>
-              <a class="contenu" href="?target_link=VIEWRECHERCHES">Recherche de contenu</a> 
+          <td style="width:25%;">Gestion des documents
+              <ul>
+                  <li><a class="contenu" href="?target_link=VIEWDOCUMENTS"><span class="menu">Voir les documents</span></a></li>
+              </ul>
+          </td>
+          <td style="width:25%;">Recherches
+              <ul>
+                  <li><a class="contenu" href="?target_link=VIEWRECHERCHES"><span class="menu">Recherche de contenu</span></a></li> 
+              </ul>
           </td>
         </tr>
         <tr>
-            <td style="width:25%;">Synopsis<br><br>
-                <a class="contenu" href="?target_link=VIEWSYNOPSIS">Suivi de l'enquêtes</a><br>
-                <a class="contenu" href="?target_link=VIEWTODO">Planification - Tâches à réaliser</a>   
+            <td style="width:25%;">Synopsis
+                <ul>
+                    <li><a class="contenu" href="?target_link=VIEWSYNOPSIS"><span class="menu">Suivi de l'enquêtes</span></a></li>
+                    <li><a class="contenu" href="?target_link=VIEWTODO"><span class="menu">Planification - Tâches à réaliser</span></a></li> 
+                </ul>
             </td>
         </tr>
       </tbody>
