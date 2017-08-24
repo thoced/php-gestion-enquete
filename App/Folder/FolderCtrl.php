@@ -22,6 +22,22 @@ use App\DbConnect;
 class FolderCtrl extends BaseController{
     //put your code here
     
+    public function showNewFolder(){
+        
+        // recherche des owner
+        $db = DbConnect::getInstance();
+        $req = $db->_dbb->prepare("select * from t_users");
+        $req->execute();
+        
+        // recherche des groupes
+        $db = DbConnect::getInstance();
+        $reqGroup = $db->_dbb->prepare("select * from t_group");
+        $reqGroup->execute();
+        
+    // appel à la vue
+        require './App/Folder/AddFolderView.php';
+    }
+    
     public function addfaits(){
         if(!isset($this->update)){
              throw new \Exception("Erreur dans la variable update, une erreur est survenue");
@@ -163,6 +179,55 @@ class FolderCtrl extends BaseController{
 
     public function insert($login,$setting,$action,$id,$update) {
         
+        if(!isset($update['owner'])) 
+            throw new \Exception("Un propriétaire de dossier n'a pas été sélectionné");
+        
+        if(!isset($update['nom_folder'])) 
+            throw new \Exception("Un nom de dossier doit être fourni");
+        
+         if(!isset($update['commentaire'])) 
+            throw new \Exception("Un commentaire lié au dossier doit être fourni");
+
+        if(isset($update['group']) && !empty($update['group'])){
+           
+             $db = DbConnect::getInstance();
+             try{
+             $db->_dbb->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             
+             $db->_dbb->beginTransaction();
+             
+             // enregistrement du folder
+             $reqFolder = $db->_dbb->prepare("insert into t_folders (nom,commentaire,owner,visible) VALUES "
+                     . "(:nom,:commentaire,:owner,1)");
+             $reqFolder->execute(array("nom" => $update['nom_folder'],
+                                       "commentaire"  => $update['commentaire'],
+                                       "owner" => $update['owner']));
+             
+             $lastId = $db->_dbb->lastInsertId();
+             
+             // enregistrement 
+               $groups = $update['group'];
+               foreach($groups as $g){
+                    $reqGroup = $db->_dbb->prepare("insert into t_link_group_folders (ref_id_group,ref_id_folders) VALUES "
+                            . "(:ref_id_group,:ref_id_folders)");
+                    
+                    $reqGroup->execute(array("ref_id_group" => $g,
+                                       "ref_id_folders"  => $lastId));
+               }
+
+             $db->_dbb->commit();
+            
+             }
+             catch(\Exception $e){
+                  $db->_dbb->rollBack();
+                  throw new \Exception("Une erreur est survenue lors de l'ajout du nouveau dossier");
+             }
+          
+        }
+        else
+              throw new \Exception("Un groupe n'a pas été sélectionné ou une erreur est survenue");
+        
+        $this->show($login, $setting, $action, $id, $update);
     }
 
     public function update($login,$setting,$action,$id,$update) {

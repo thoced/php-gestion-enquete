@@ -27,7 +27,9 @@
         <tr>
           <td style="width: 25%;">Gestion des Dossiers<br>
             <br>
-            <a class="contenu" href="?target_link=VIEWDOSSIERS">Voir les dossiers</a></td>
+            <a class="contenu" href="?target_link=VIEWDOSSIERS">Voir les dossiers</a><br>
+            <a class="contenu" href="?target_link=VIEWDOSSIERS&action=SHOWNEWFOLDER">Créer un dossier</a>
+          </td>
           <td style="width: 25%;">Gestion des Personnes physique<br>
             <br>
             <a class="contenu" href="?target_link=VIEWPERSONNES">Voir les personnes</a></td>
