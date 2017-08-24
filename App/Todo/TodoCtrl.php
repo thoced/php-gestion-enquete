@@ -122,7 +122,7 @@ class TodoCtrl extends BaseController{
                             "ref_id_folders" => $setting->getIdFolderSelected()));
         
         
-        return $checked;
+       
     }
 
 }
