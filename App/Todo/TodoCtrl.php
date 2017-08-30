@@ -66,7 +66,7 @@ class TodoCtrl extends BaseController{
                 . ":statut,"
                 . ":ref_id_folders)");
         
-        $statut = true;
+        $statut = 0;
         
         if($req->execute(array("libelle" => $libelle,
                             "commentaire" => $commentaire,
