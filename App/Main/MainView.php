@@ -16,7 +16,7 @@
       <?php echo $nom;?>
       
     </div>
-    <p><a href="?target_link=LOGOUT"></a><br>
+    <p><a class="logout" href="?target_link=LOGOUT"></a><br>
     </p>
     <br>
     <p><br>
