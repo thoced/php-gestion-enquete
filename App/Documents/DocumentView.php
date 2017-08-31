@@ -92,7 +92,7 @@ function verifDelete()
   </head>
  
   <body>
-  <h1 style="text-align: center;">Gestion des documents</h1>
+  <h1 class="Title" style="text-align: center;">Gestion des documents</h1>
   <div class="list">
     <table width="95%" align="center">
         <tr>
