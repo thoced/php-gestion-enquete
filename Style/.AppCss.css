@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+
 .menu{
      background-color: black;
      color:white;
@@ -39,6 +40,12 @@ a:hover .menu{
      transition:all .5s;
      opacity:0;
      z-index: 5;
+     
+}
+
+span{
+ max-width: 33%;
+ word-wrap: break-word;   
 }
 
 a:hover span, a:focus span{
@@ -51,6 +58,8 @@ a:hover span, a:focus span{
 a:hover,a:focus{
      background:rgba(0,0,0,.4);
      box-shadow:0 1px 0 rgba(255,255,255,.4);
+     
+     
 }
 
 .rapport{
@@ -89,15 +98,25 @@ a:hover,a:focus{
 
 }
 
+.annexe,.contenu,.supprimer,.logout{
+    background-color: black;
+}
+
+.logout{
+    color:green;
+}
+
 .annexe{
     color: #dc7633;
 }
 
 .contenu{
+
     color:green;
 }
 
 .supprimer{
+   
     color:red;
 }
 
@@ -137,7 +156,9 @@ table {
 }
 
 body{
-    background-color: wheat;
+   /* background-color: wheat;*/
+    /*background-color: #273746;*/ 
+    background-color: #1b4e69;
     z-index: 0;
 }
 
@@ -153,7 +174,8 @@ body{
   border-color : lightblue;
   border-width: 4px;
   border-style:   solid;
-  background-image:linear-gradient(azure,  ghostwhite );
+ /* background-image:linear-gradient(azure,  ghostwhite );*/
+  background-image:linear-gradient( #7f8c8d ,   #99a3a4  );
   z-index:1;
 }
 
@@ -172,10 +194,11 @@ body{
      z-index: 0;
 }
 
-#Title {
+.Title {
   text-align: center;
   font-weight: bold;
   font-size: 30px;
+  color: white;
 }
 
 #loginInfo {
