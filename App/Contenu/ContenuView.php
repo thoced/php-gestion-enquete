@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-         <h1 style="text-align: center;">Vue sur le contenu</h1>
+         <h1 class="Title" style="text-align: center;">Vue sur le contenu</h1>
          <form name="form_contenu" action="<?php echo '?target_link=VIEWCONTENU&action=UPDATE&id=' . $id; ?>" method="POST">
         <div class="contenuArea">
             <p style="text-align: center;">
