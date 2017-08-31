@@ -91,7 +91,7 @@ function verifDelete()
   </head>
  
   <body>
-       <h1 style="text-align: center;">Gestion des personnes</h1>
+       <h1 class="Title" style="text-align: center;">Gestion des personnes</h1>
     <br>
     <br>
   <div class="list">
@@ -106,8 +106,8 @@ function verifDelete()
     <?php
         while($row = $req->fetch()){
        echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);' onclick='updateScript(this," . $row['id']. ");'>"
-    . "<td>" . $row['nom'] . '</td>'
-               . '<td>' . $row['prenom'] . '</td>'
+    . "<td><b>" . $row['nom'] . '</b></td>'
+               . '<td><b>' . $row['prenom'] . '</b></td>'
                . '<td>' . $row['adresse'] . '</td>'
                . '<td>' . $row['date_naissance'] . '</td>'
                . '<td>' . $row['qualite'] . '</td>'

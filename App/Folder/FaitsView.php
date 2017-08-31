@@ -50,7 +50,7 @@ function verifDelete()
     </script>
   </head>
   <body>
-       <h1 style="text-align: center;">Vue des faits associés au dossier</h1>
+       <h1 class="Title" style="text-align: center;">Vue des faits associés au dossier</h1>
       <br>
     <br>
     <br>

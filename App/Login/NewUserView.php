@@ -45,7 +45,7 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-         <h1 style="text-align: center;">Nouvel utilisateur</h1>
+         <h1 class="Title" style="text-align: center;">Nouvel utilisateur</h1>
         <div class="login">
        <form method="POST" action="?target_link=NEWUSER&action=INSERT" name="form_newuser">
       <table style="width: 100%;height: 100%;" border="0">

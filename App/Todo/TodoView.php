@@ -84,7 +84,7 @@ function doneClick(checkedBox,id){
         <title></title>
     </head>
     <body>
-        <h1 style="text-align: center;">Planification - Tâches à réaliser</h1>
+        <h1 class="Title" style="text-align: center;">Planification - Tâches à réaliser</h1>
         <br>
         <div class="list">
             <table width="90%">

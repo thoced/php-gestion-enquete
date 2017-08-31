@@ -91,7 +91,7 @@ function verifDelete()
   </head>
   
   <body>
-       <h1 style="text-align: center;">Création d'un dossier</h1>
+       <h1 class="Title" style="text-align: center;">Création d'un dossier</h1>
     <br>
 
     <div class="form">

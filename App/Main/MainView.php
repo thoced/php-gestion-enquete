@@ -6,7 +6,7 @@
     <title>MainView.php</title>
 </head>
   <body>
-    <p id="Title">Gestion Enquête Locale</p>
+    <p class="Title">Gestion Enquête Locale</p>
     <p><a href="?target_link=LOGOUT">Logout</a></p>
     <div id="loginInfo">Utilisateur :
       <?php echo "<b>" . $user . "</b>" ?> <br>
