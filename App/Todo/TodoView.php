@@ -80,6 +80,20 @@ function doneClick(checkedBox,id){
     
     return true;
 }
+
+function copyClipboard(elem){
+    var clipboard = elem.getElementsByClassName('infoBulle')[0];
+    var textArea = document.createElement("TEXTAREA");
+    var t = document.createTextNode(clipboard.innerText);
+    textArea.appendChild(t);
+    document.body.appendChild(textArea);
+    textArea.select();
+    var successful = document.execCommand('copy');
+    textArea.style.visibility = "hidden";
+    if(!successful)
+        alert("Une erreur est survenue lors de la copie de l'élement dans le presse papier")
+    
+}
          </script>
         <title></title>
     </head>
@@ -107,7 +121,7 @@ function doneClick(checkedBox,id){
                         echo "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
                         . "<td>" . $i . ".</td>"
                         . "<td>" . $row['libelle'] . "</td>"
-                        . "<td><a href='#'>" . substr($row['commentaire'], 0,16) . " ...<span class='infoBulle'>" . $row['commentaire'] . "</span></a></td>"
+                        . "<td><a onclick='copyClipboard(this);' href='#'>" . substr($row['commentaire'], 0,16) . " ...<span id='copy' class='infoBulle'>" . $row['commentaire'] . "</span></a></td>"
                         . "<td>" . $row['date_creation'] . "</td>"
                         . "<td>" . $row['date_rappel'] . "</td>"
                         . "<td><input " . $checked . " type='checkbox' name='done' onclick='return doneClick(this," . $row['id'] . ");'></td>"
