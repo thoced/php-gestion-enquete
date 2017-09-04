@@ -8,8 +8,8 @@
   <body>
     <p>
     </p>
-    <p><h1 style="text-align: center; font-size: 92px; font-stretch:  semi-condensed;">G.E.L</h1></p>
-    <p class="Title"><h3 style="text-align: center; font-size: 48px;">Gestion d'enquête locale</h1></p>
+    <p><h1 class="Title" style="text-align: center; font-size: 92px; font-stretch:  semi-condensed;">G.E.L</h1></p>
+    <p><h3 class="Title" style="text-align: center; font-size: 48px;">Gestion d'enquête locale</h1></p>
     <div class="login">
     <form method="POST" action="?target_link=CHECKLOGIN" name="form_login">
       <table style="width: 100%;height: 100%;" border="0">
