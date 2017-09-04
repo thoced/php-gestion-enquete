@@ -11,7 +11,7 @@ function openNewWindow(id){
 }        
 </script>
 <body>
-     <h1 style="text-align: center;">Vue sur les annexes</h1>
+     <h1 class="Title" style="text-align: center;">Vue sur les annexes</h1>
 <div class="listAnnexe">
             <table width="90%" align="center">
                 <tr>
