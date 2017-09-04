@@ -122,7 +122,7 @@ class FolderCtrl extends BaseController{
        $ref_id_folders = $this->id;
       
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare("select * from t_faits INNER JOIN t_listfaits ON t_faits.ref_id_listfaits = t_listfaits.id where t_faits.ref_id_folders = :ref_id_folders");
+        $req = $db->_dbb->prepare("select *,DATE_FORMAT(date_basse,'%d/%m/%Y') AS date_basse, DATE_FORMAT(date_haute,'%d/%m/%Y') AS date_haute from t_faits INNER JOIN t_listfaits ON t_faits.ref_id_listfaits = t_listfaits.id where t_faits.ref_id_folders = :ref_id_folders");
         if($req->execute(array("ref_id_folders" => $this->id)) == false){
             throw new \Exception("Erreur dans la sélection des faits, une erreur est survenue");
         }
