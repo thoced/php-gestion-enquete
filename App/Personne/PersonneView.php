@@ -37,22 +37,22 @@ function updateScript(tr,id){
    
         // ajout du contenu des td dans les inputs
         var nom = document.createAttribute("value");
-        nom.value = listTd[0].innerHTML;
+        nom.value = listTd[0].innerText;
         inputNom = document.getElementById("nom");
         inputNom.setAttributeNode(nom);
         
         var prenom = document.createAttribute("value");
-        prenom.value = listTd[1].innerHTML;
+        prenom.value = listTd[1].innerText;
         inputPrenom = document.getElementById("prenom");
         inputPrenom.setAttributeNode(prenom);
         
         var adresse = document.createAttribute("value");
-        adresse.value = listTd[2].innerHTML;
+        adresse.value = listTd[2].innerText;
         inputAdresse = document.getElementById("adresse");
         inputAdresse.setAttributeNode(adresse);
         
         var date_naissance = document.createAttribute("value");
-        date_naissance.value = listTd[3].innerHTML;
+        date_naissance.value = listTd[3].innerText;
         inputDate = document.getElementById("datepicker");
         inputDate.setAttributeNode(date_naissance);
         
