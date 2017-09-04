@@ -90,7 +90,7 @@ class DocumentCtrl extends BaseController{
             throw new \Exception ("Probleme avec la variable setting");
         
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare('select * from t_document inner join t_type_document ON t_document.ref_id_type = t_type_document.id where t_document.ref_id_folders = :idfolder');
+        $req = $db->_dbb->prepare('select *,DATE_FORMAT(date,"%d/%m/%Y") AS date from t_document inner join t_type_document ON t_document.ref_id_type = t_type_document.id where t_document.ref_id_folders = :idfolder');
         if($req->execute(array("idfolder" => $setting->getIdFolderSelected())) == false)
             throw new \Exception ("Lecteur des documents non réalisée, une erreur est survenue");
         // récupération des types de document

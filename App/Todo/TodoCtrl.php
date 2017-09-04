@@ -90,7 +90,7 @@ class TodoCtrl extends BaseController{
             throw new \Exception("Erreur dans la variable setting, une erreur est survenue");
         
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare("select * from t_todo where ref_id_folders = :ref_id_folders");
+        $req = $db->_dbb->prepare("select *,DATE_FORMAT(date_creation,'%d/%m/%Y') AS date_creation,DATE_FORMAT(date_rappel,'%d/%m/%Y') AS date_rappel from t_todo where ref_id_folders = :ref_id_folders");
         if($req->execute(array("ref_id_folders" => $setting->getIdFolderSelected())) == false){
             throw new \Exception("Erreur dans la requete de le sélection des synopsis");
         }

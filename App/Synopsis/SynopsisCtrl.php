@@ -176,7 +176,7 @@ class SynopsisCtrl extends BaseController{
             throw new \Exception("Erreur dans la variable setting, une erreur est survenue");
         
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare("select * from t_synopsis where ref_id_folders = :ref_id_folders");
+        $req = $db->_dbb->prepare("select *,DATE_FORMAT(date,'%d/%m/%Y') AS date from t_synopsis where ref_id_folders = :ref_id_folders");
         if($req->execute(array("ref_id_folders" => $setting->getIdFolderSelected())) == false){
             throw new \Exception("Erreur dans la requete de le sélection des synopsis");
         }

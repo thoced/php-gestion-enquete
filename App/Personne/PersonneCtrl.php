@@ -97,7 +97,7 @@ class PersonneCtrl extends BaseController
         
          // reception des Personnes
         $db = DbConnect::getInstance();
-        $req = $db->_dbb->prepare('select * from t_personne where ref_id_folders = :refFolder');
+        $req = $db->_dbb->prepare('select *,DATE_FORMAT(date_naissance,"%d/%m/%Y") AS date_naissance from t_personne where ref_id_folders = :refFolder');
         if($req->execute(array('refFolder' => $setting->getIdFolderSelected())) == false){
             throw new \Exception("la selection n'a pas eu lieu, une erreur est survenue");
         }
