@@ -10,6 +10,20 @@ function mouseOver(tr){
 function mouseOut(tr){
     tr.style.backgroundColor = null;
 }
+
+function copyClipboard(elem){
+    var clipboard = elem.getElementsByClassName('infoBulle')[0];
+    var textArea = document.createElement("TEXTAREA");
+    var t = document.createTextNode(clipboard.innerText);
+    textArea.appendChild(t);
+    document.body.appendChild(textArea);
+    textArea.select();
+    var successful = document.execCommand('copy');
+    textArea.style.visibility = "hidden";
+    if(!successful)
+        alert("Une erreur est survenue lors de la copie de l'élement dans le presse papier")
+    
+}
     </script>
   </head>
   <body>
@@ -32,7 +46,7 @@ function mouseOut(tr){
         echo  "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
             . "<td>" . $i. "</td>" // 0 au lieu de id car la requete récupère plusieurs types d'id
             . "<td>" . $folder['nom'] . "</td>"
-            . "<td><a href='#'>" . substr($folder['commentaire'],0,16) . " ...<span class='infoBulle'>"  .$folder['commentaire'] . "</span></td>"
+            . "<td><a onclick='copyClipboard(this);'href='#'>" . substr($folder['commentaire'],0,16) . " ...<span class='infoBulle'>"  .$folder['commentaire'] . "</span></td>"
                 . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=SELECT&id=" . $folder[0]."'>Cliquez ici pour sélectionner</a>"
                 . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=FAITS&id=" . $folder[0]."'>Faits</a>"   
             . "</tr>";
