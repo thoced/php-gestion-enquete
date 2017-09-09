@@ -36,6 +36,7 @@ class FolderCtrl extends BaseController{
         
     // appel à la vue
         require './App/Folder/AddFolderView.php';
+        return false;
     }
     
     public function addfaits(){

@@ -18,10 +18,7 @@
     </div>
     <p><a class="logout" href="?target_link=LOGOUT"></a><br>
     </p>
-    <br>
-    <p><br>
-    </p>
-    <div class="list">
+     <div class="list">
     <table style="width: 100%" border="0">
       <tbody>
         <tr>
@@ -29,8 +26,19 @@
               <ul>
                   <li><a class="contenu" href="?target_link=VIEWDOSSIERS"><span class="menu">Voir les dossiers</span></a></li>
                   <li><a class="contenu" href="?target_link=VIEWDOSSIERS&action=SHOWNEWFOLDER"><span class="menu">Créer un dossier</span></a></li>
+                  <li><a class="contenu" href="?target_link=VIEWAPOSTILLES"><span class="menu">Gestion des apostilles</span></a></li>
               </ul>
           </td>
+        </tr>
+      </tbody>
+        </table>
+    </div>
+    <br>
+    <p><br>
+    </p>
+    <div class="list">
+    <table style="width: 100%" border="0">
+      <tbody>
           <td style="width: 25%;">Gestion des Personnes physique
               <ul>
                   <li><a class="contenu" href="?target_link=VIEWPERSONNES"><span class="menu">Voir les personnes</span></a></li>
@@ -56,8 +64,9 @@
             </td>
         </tr>
       </tbody>
+        </table>
     </div>
-    </table>
+  
     <p><br>
     </p>
   </body>

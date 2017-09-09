@@ -8,6 +8,22 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.apostille_cloture{
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    top: 40%;
+    bottom: 50%;
+    height: 20%;
+    background-color: #3284d0;
+    border-color : lightblue;
+    border-width: 4px;
+    border-style:   solid;
+    background-image:linear-gradient(azure,  ghostwhite );
+    border-radius: 6px;
+    visibility: hidden;
+    z-index: 10;
+}
 
 .menu{
      background-color: black;

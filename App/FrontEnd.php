@@ -21,6 +21,7 @@ require_once './App/Main/MainCtrl.php';
 require_once './App/Setting/SettingModel.php';
 require_once './App/Synopsis/SynopsisCtrl.php';
 require_once './App/Todo/TodoCtrl.php';
+require_once './App/Apostilles/ApostilleCtrl.php';
 
 use App\DbConnect;
 use App\Login\LoginModel;
@@ -37,6 +38,7 @@ use App\Exception\ExceptionCtrl;
 use App\Synopsis\SynopsisCtrl;
 use App\Login\NewUserCtrl;
 use App\Todo\TodoCtrl;
+use App\Apostilles\ApostilleCtrl;
 
 
 if(!isset($_SESSION))
@@ -104,6 +106,11 @@ if(isset($_SESSION['LOGIN']))
     {
     switch($target)
       {
+      
+      case "VIEWAPOSTILLES":new ApostilleCtrl();
+                            die;
+                            break;
+        
       case 'VIEWTODO':    new TodoCtrl();
                           die;
                           break;

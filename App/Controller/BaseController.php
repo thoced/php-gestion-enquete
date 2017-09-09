@@ -81,8 +81,7 @@ abstract class BaseController
                             break;
             default      :  
                             // appel à la reflectionclass pour déterminer si l'objet possède une methode passé en parametre de l'url
-
-                            if($this->reflection($action) == false)
+                            $this->reflection($action);
                             $this->show($login,$setting,$action,$id,$update);
                             break;
         }
@@ -97,8 +96,8 @@ abstract class BaseController
         $nameMethode = strtolower($action);
         if($reflexion->hasMethod($nameMethode)){
             $method = $reflexion->getMethod($nameMethode);
-            $method->invoke($this);
-            return true; // return true si l'invocation à eu lieu
+            return $method->invoke($this);
+            //return true; // return true si l'invocation à eu lieu
         }
         return false; // return false si pas de methode trouvé donc pas d'invocation.
 
