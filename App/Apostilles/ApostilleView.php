@@ -29,45 +29,6 @@ $( ".datepicker" ).datepicker({
     });
 });
 
-function updateScript(tr,id){
-    
-    // tr : contient la ligne complète selectionné
-    var listTd = tr.childNodes;
-    // récupératin des td
-   
-        // ajout du contenu des td dans les inputs
-        var nom = document.createAttribute("value");
-        nom.value = listTd[0].innerText;
-        inputNom = document.getElementById("nom");
-        inputNom.setAttributeNode(nom);
-        
-        var prenom = document.createAttribute("value");
-        prenom.value = listTd[1].innerText;
-        inputPrenom = document.getElementById("prenom");
-        inputPrenom.setAttributeNode(prenom);
-        
-        var adresse = document.createAttribute("value");
-        adresse.value = listTd[2].innerText;
-        inputAdresse = document.getElementById("adresse");
-        inputAdresse.setAttributeNode(adresse);
-        
-        var date_naissance = document.createAttribute("value");
-        date_naissance.value = listTd[3].innerText;
-        inputDate = document.getElementById("datepicker");
-        inputDate.setAttributeNode(date_naissance);
-        
-         inputQualite = document.getElementById("qualite");
-         for(i=0;i<inputQualite.options.length;i++){
-             if(inputQualite.options[i].text === listTd[4].innerText)
-                 inputQualite.options[i].selected = true;
-        }
-        
-        // changement d'action pour le form
-        document.getElementById("form_personne").setAttribute("action","?target_link=VIEWPERSONNES&action=UPDATE&id=" + id);
-      
-
-}
-
 
 
 function mouseOver(tr){
