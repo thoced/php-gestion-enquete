@@ -24,14 +24,52 @@ function copyClipboard(elem){
         alert("Une erreur est survenue lors de la copie de l'élement dans le presse papier")
     
 }
+function valide_filtre(id){
+   
+    var xhr = new XMLHttpRequest();  
+     xhr.onreadystatechange = function(event){
+         if(xhr.readyState == XMLHttpRequest.DONE){
+             if(xhr.status === 200){
+               
+                var p = document.createElement("TABLE");
+                p.innerHTML = xhr.responseText;
+                var div = document.getElementById("div_show");
+               while (div.firstChild) {
+                    div.removeChild(div.firstChild);
+               }
+               p.setAttribute("width","90%");
+               p.setAttribute("align","center");
+               div.appendChild(p);
+               // div.removeNode(p);
+              
+             }
+         }
+     };
+     // xhr.setRequestHeader('Content-Type',  'text/xml');
+     xhr.open("GET", "index.php?target_link=VIEWDOSSIERS&action=FILTRE&idgroupselected=" + id.value, true);
+     xhr.send(null);
+}
+
     </script>
   </head>
   <body>
        <h1 class="Title" style="text-align: center;">Selection d'un dossier</h1>
       <br>
+       <div>
+        
+        <select onchange="valide_filtre(this);" name="filtre_id_group" id="filtre_id_group">
+            echo "<option value='-1'>Tous les groupes</option>
+            <?php 
+                 foreach ($array_group as $row){
+                     echo "<option value='" . $row['id'] . "'>" . $row['group_name'] . "</option>";
+                 }
+            ?>
+        </select>
+        
+    </div> 
     <br>
     <br>
-<div class="list">
+<div class="list" id="div_show">
 <table width=90%" align="center">
     <tr>
         <td>Num</td>
@@ -40,7 +78,7 @@ function copyClipboard(elem){
     </tr>
 
     <?php 
-    $i =1;
+    $i = 1;
     while($folder = $req->fetch())
     { 
         echo  "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"

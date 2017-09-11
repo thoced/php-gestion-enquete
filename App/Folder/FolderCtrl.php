@@ -138,6 +138,71 @@ class FolderCtrl extends BaseController{
         require './App/Folder/FaitsView.php';
     }
     
+    public function filtre(){
+        
+         if(!isset($_GET['idgroupselected'])){
+            return;
+        }
+
+        $idgroupselected = $_GET['idgroupselected'];
+        
+        $db = DbConnect::getInstance();
+               
+        if($idgroupselected == -1){
+        
+        $req = $db->_dbb->prepare("select DISTINCT * from t_folders where t_folders.id IN "
+                 . "(select t_link_group_folders.ref_id_folders from t_link_group_folders where t_link_group_folders.ref_id_group IN "
+                 . "(select t_link_group_users.ref_id_group from t_link_group_users where t_link_group_users.ref_id_users = (select t_users.id from t_users where login = :login))) AND t_folders.visible = TRUE");
+        
+        if($req->execute(array("login" => $this->login->login)) == false){
+            throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
+           }
+           
+        }else{
+            $req = $db->_dbb->prepare("select DISTINCT * from t_folders where t_folders.id IN "
+                 . "(select t_link_group_folders.ref_id_folders from t_link_group_folders where t_link_group_folders.ref_id_group = :idgroupselected AND t_link_group_folders.ref_id_group IN "
+                 . "(select t_link_group_users.ref_id_group from t_link_group_users where t_link_group_users.ref_id_users = (select t_users.id from t_users where login = :login))) AND t_folders.visible = TRUE");
+            
+           if($req->execute(array("idgroupselected" => $idgroupselected,
+                                  "login" => $this->login->login)) == false){
+            throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
+           }
+            
+        }
+
+        
+       
+        
+        $array_folder = $req->fetchAll();
+        
+        header("Content-Type: text/plain");
+     
+        $html = "<tr>
+        <td>Num</td>
+        <td>Nom</td>
+        <td>Commentaire</td>
+        </tr>";
+        
+        $i=1;
+        foreach($array_folder as $folder){
+            $html .= "<tr onmouseover='mouseOver(this);' onmouseout='mouseOut(this);'>"
+            . "<td>" . $i. "</td>" // 0 au lieu de id car la requete récupère plusieurs types d'id
+            . "<td>" . $folder['nom'] . "</td>"
+            . "<td><a onclick='copyClipboard(this);'href='#'>" . substr($folder['commentaire'],0,16) . " ...<span class='infoBulle'>"  .$folder['commentaire'] . "</span></td>"
+                . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=SELECT&id=" . $folder[0]."'>Cliquez ici pour sélectionner</a>"
+                . "<td><a class='contenu' href='?target_link=VIEWDOSSIERS&action=FAITS&id=" . $folder[0]."'>Faits</a>"   
+            . "</tr>";
+            
+            $i++;
+        }
+        
+        
+        echo $html;
+         // return true pour ne pas obtenir le show
+        return true;
+        
+    }
+    
     public function show($login,$setting,$action,$id,$update)
     {
         if(!isset($login)){
@@ -153,6 +218,18 @@ class FolderCtrl extends BaseController{
         if($req->execute(array("login" => $login->login)) == false){
             throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
         }
+        
+        // selection des groupes pour le filtre
+        $db = DbConnect::getInstance();
+               
+        $reqFiltre = $db->_dbb->prepare("select * from t_group where t_group.id IN "
+                . "(select t_link_group_users.ref_id_group from t_link_group_users where ref_id_users IN (select t_users.id from t_users where login = :login)) ORDER BY t_group.group_name");
+        
+        if($reqFiltre->execute(array("login" => $login->login)) == false){
+            throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
+        }
+        
+        $array_group = $reqFiltre->fetchAll();
         
         // appel à la vue
         require './App/Folder/ViewFoldersView.php';
