@@ -146,10 +146,9 @@ class FolderCtrl extends BaseController{
         
         $db = DbConnect::getInstance();
                
-        $req = $db->_dbb->prepare("select * from t_folders inner join t_link_group_folders on t_folders.id = t_link_group_folders.ref_id_folders "
-                    . "where t_link_group_folders.ref_id_group IN ("
-                    . "select DISTINCT t_group.id from t_group inner join t_link_group_users on t_group.id = t_link_group_users.ref_id_group "
-                    . "where t_link_group_users.ref_id_users = (select t_users.id from t_users where login = :login)) AND t_folders.visible = TRUE" );
+        $req = $db->_dbb->prepare("select DISTINCT * from t_folders where t_folders.id IN "
+                 . "(select t_link_group_folders.ref_id_folders from t_link_group_folders where t_link_group_folders.ref_id_group IN "
+                 . "(select t_link_group_users.ref_id_group from t_link_group_users where t_link_group_users.ref_id_users = (select t_users.id from t_users where login = :login))) AND t_folders.visible = TRUE");
         
         if($req->execute(array("login" => $login->login)) == false){
             throw new \Exception("Erreur dans la selection des dossiers, une erreur est survenue");
