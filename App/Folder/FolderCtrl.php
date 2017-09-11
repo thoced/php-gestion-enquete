@@ -170,9 +170,6 @@ class FolderCtrl extends BaseController{
             
         }
 
-        
-       
-        
         $array_folder = $req->fetchAll();
         
         header("Content-Type: text/plain");
@@ -277,9 +274,9 @@ class FolderCtrl extends BaseController{
              // enregistrement du folder
              $reqFolder = $db->_dbb->prepare("insert into t_folders (nom,commentaire,owner,visible) VALUES "
                      . "(:nom,:commentaire,:owner,1)");
-             $reqFolder->execute(array("nom" => $update['nom_folder'],
-                                       "commentaire"  => $update['commentaire'],
-                                       "owner" => $update['owner']));
+             $reqFolder->execute(array("nom" => htmlspecialchars($update['nom_folder'], ENT_QUOTES),
+                                       "commentaire"  => htmlspecialchars($update['commentaire'], ENT_QUOTES),
+                                       "owner" => htmlspecialchars($update['owner'], ENT_QUOTES)));
              
              $lastId = $db->_dbb->lastInsertId();
              
