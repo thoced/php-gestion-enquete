@@ -74,13 +74,13 @@ class ApostilleCtrl extends BaseController
                   . "ref_id_folders = :ref_id_folders "
                   . "WHERE id = :id");
                 
-          if($req->execute(array("numero" => $update["numero"],
+          if($req->execute(array("numero" => htmlspecialchars($update["numero"], ENT_QUOTES),
                               "date_apostille" => $dateApo->format('Y-m-d'),
                               "date_in" => $dateIn->format('Y-m-d'),
-                              "reference" => $update["reference"],
-                              "magistrat" => $update["magistrat"],
-                              "sujet" => $update["sujet"],
-                              "attribue" => $update["attribue"],
+                              "reference" => htmlspecialchars($update["reference"], ENT_QUOTES),
+                              "magistrat" => htmlspecialchars($update["magistrat"], ENT_QUOTES),
+                              "sujet" => htmlspecialchars($update["sujet"], ENT_QUOTES),
+                              "attribue" => htmlspecialchars($update["attribue"], ENT_QUOTES),
                               "ref_id_folders" => $update["ref_id_folders"],
                               "id" => $update["id"])) == FALSE){
                echo $req->queryString;
@@ -125,13 +125,13 @@ class ApostilleCtrl extends BaseController
             $db = DbConnect::getInstance();
             $req = $db->_dbb->prepare('insert into t_apostilles (numero,date_apostille,date_in,reference,magistrat,sujet,attribue,ref_id_folders) values '
                     . '(:numero,:date_apostille,:date_in,:reference,:magistrat,:sujet,:attribue,:ref_id_folders)');
-            if($ret = $req->execute(array('numero' => $update['numero'],
+            if($ret = $req->execute(array('numero' => htmlspecialchars ($update['numero'], ENT_QUOTES),
                                           'date_apostille' => $dateApo->format("Y-m-d"),
                                           'date_in' => $dateIn->format("Y-m-d"),
-                                          'reference' => $update['reference'],
-                                          'magistrat' => $update['magistrat'],
-                                          'sujet' => $update['sujet'],
-                                          'attribue' => $update['attribue'],
+                                          'reference' => htmlspecialchars ($update['reference'], ENT_QUOTES),
+                                          'magistrat' => htmlspecialchars ($update['magistrat'], ENT_QUOTES),
+                                          'sujet' => htmlspecialchars ($update['sujet'], ENT_QUOTES),
+                                          'attribue' => htmlspecialchars ($update['attribue'], ENT_QUOTES),
                                           'ref_id_folders' => $update['ref_id_folders'])) == false ){
                 throw new \Exception("l'insertion ne s'est pas réalisée, une erreur est survenue");
             }
