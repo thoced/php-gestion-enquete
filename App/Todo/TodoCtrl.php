@@ -84,6 +84,27 @@ class TodoCtrl extends BaseController{
     public function select($login, $setting, $action, $id, $update) {
         
     }
+    
+    public function alltodo(){
+          
+        $db = DbConnect::getInstance();
+         $req = $db->_dbb->prepare("select *,t_todo.commentaire AS todocommentaire, DATE_FORMAT(date_creation,'%d/%m/%Y') AS date_creation,DATE_FORMAT(date_rappel,'%d/%m/%Y') AS date_rappel from t_todo  "
+                 . "INNER JOIN t_folders ON t_folders.id = t_todo.ref_id_folders WHERE ref_id_folders IN "
+                . "(select t_link_group_folders.ref_id_folders from t_link_group_folders where t_link_group_folders.ref_id_group IN "
+                . "(select t_link_group_users.ref_id_group from t_link_group_users where t_link_group_users.ref_id_users = :id_user)) AND t_todo.statut = 0 ORDER BY t_todo.date_creation ");
+        
+        /* $req = $db->_dbb->prepare("select *,DATE_FORMAT(date_creation,'%d/%m/%Y') AS date_creation,DATE_FORMAT(date_rappel,'%d/%m/%Y') AS date_rappel from t_todo where ref_id_folders IN "
+                . "(select t_link_group_folders.ref_id_folders from t_link_group_folders where t_link_group_folders.ref_id_group IN "
+                . "(select t_link_group_users.ref_id_group from t_link_group_users where t_link_group_users.ref_id_users = :id_user))");*/
+        
+        if($req->execute(array("id_user" => $this->login->idUser)) == false){
+            throw new \Exception("Erreur dans la requete de le sélection des synopsis");
+        }
+        
+        // appel à la vue
+        require './App/Todo/TodoViewGlobal.php';
+        return true;
+    }
 
     public function show($login, $setting, $action, $id, $update) {
          if(!isset($setting))

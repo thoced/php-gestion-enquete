@@ -29,6 +29,11 @@
                   <li><a class="contenu" href="?target_link=VIEWAPOSTILLES"><span class="menu">Gestion des apostilles</span></a></li>
               </ul>
           </td>
+          <td  style="width: 25%;">Gestion des tâches
+              <ul>
+                  <li><a class="contenu" href="?target_link=VIEWTODO&action=ALLTODO"><span class="menu">Voir l'ensemble des tâches</span></a></li>
+              </ul>
+          </td>
         </tr>
       </tbody>
         </table>
