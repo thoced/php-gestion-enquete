@@ -55,9 +55,8 @@ function valide_filtre(id){
   <body>
        <h1 class="Title" style="text-align: center;">Selection d'un dossier</h1>
       <br>
-       <div>
-        
-        <select onchange="valide_filtre(this);" name="filtre_id_group" id="filtre_id_group">
+       <div class="filtre">
+       Filtre de sélection: <select onchange="valide_filtre(this);" name="filtre_id_group" id="filtre_id_group">
             echo "<option value='-1'>Tous les groupes</option>
             <?php 
                  foreach ($array_group as $row){
@@ -65,8 +64,7 @@ function valide_filtre(id){
                  }
             ?>
         </select>
-        
-    </div> 
+       </div> 
     <br>
     <br>
 <div class="list" id="div_show">

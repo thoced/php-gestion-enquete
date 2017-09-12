@@ -8,6 +8,22 @@ and open the template in the editor.
     Author     : Thonon
 */
 
+.filtre{
+    height:5%;
+    width:90%;
+    background-color:#eaf2f8;
+    position:  relative; 
+    left:5%;
+    border-radius: 6px;
+    cursor: Pointer;
+    border-color : lightblue;
+    border-width: 4px;
+    border-style:   solid;
+   /* background-image:linear-gradient(azure,  ghostwhite );*/
+    background-image:linear-gradient( #bcdde0 ,   #97c2c6  );
+    z-index:1;
+}
+
 .apostille_cloture{
     position: fixed;
     left: 25%;

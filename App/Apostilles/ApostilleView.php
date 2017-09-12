@@ -200,9 +200,9 @@ function valide_cloture(){
         
     </div>  
     
-    <div>
-        
-        <select onchange="valide_filtre(this);" name="filtre_id_folders" id="filtre_id_folders">
+    <div class="filtre">
+    
+        Filtre de sélection: <select onchange="valide_filtre(this);" name="filtre_id_folders" id="filtre_id_folders">
             echo "<option value='-1'>Tous les dossiers</option>
             <?php 
                  foreach ($array_folders as $row){
@@ -212,7 +212,7 @@ function valide_cloture(){
         </select>
         
     </div> 
-    
+    <br>
   <div class="list" id="div_show">
     <table width="95%" align="center">
         <tr>
