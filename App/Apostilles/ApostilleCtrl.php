@@ -148,26 +148,44 @@ class ApostilleCtrl extends BaseController
         if(!isset($_GET['idfolderselected'])){
             return;
         }
+        
+        if(!isset($_GET['CLOTURE'])){
+            return;
+        }
 
         $idfolderselected = $_GET['idfolderselected'];
+        $cloture = $_GET['CLOTURE'];
         
-        if($idfolderselected != -1){
+        // test du filtre de cloture
+        $script_cloture = "";
+        if($cloture == "ALL")
+            $script_cloture = "";
+        else if($cloture == "INPROGRESS"){
+        $script_cloture = "AND t_apostilles.date_out IS null";}
+        else if($cloture == "CLOTURED"){
+        $script_cloture = "AND t_apostilles.date_out IS NOT null";}
+            
         
+        if($idfolderselected > -1){
+        // si un dossier est sélectionné
             $db = DbConnect::getInstance();
             $req = $db->_dbb->prepare('select *,t_apostilles.id AS idApostille, DATE_FORMAT(date_apostille,"%d-%m-%Y") AS date_apostille,DATE_FORMAT(date_in,"%d-%m-%Y") AS date_in,'
                     . ' DATE_FORMAT(date_out,"%d-%m-%Y") AS date_out from t_apostilles INNER JOIN t_folders ON t_apostilles.ref_id_folders = t_folders.id where ref_id_folders IN '
                     . '(select ref_id_folders from t_link_group_folders where ref_id_group IN '
-                    . '(select ref_id_group from t_link_group_users where ref_id_users = :id_user AND t_apostilles.ref_id_folders = :idfolderselected))');
+                    . '(select ref_id_group from t_link_group_users where ref_id_users = :id_user) AND t_apostilles.ref_id_folders = :idfolderselected) ' . $script_cloture);
+            
+        
             if($req->execute(array("id_user" => $this->login->idUser,
                                     "idfolderselected" => $idfolderselected)) == false){
                 throw new \Exception("la selection n'a pas eu lieu, une erreur est survenue");
             }
         }else{
-             $db = DbConnect::getInstance();
+            // si aucun dossier n'est sélectionné, affichage de toutes les apostilles
+            $db = DbConnect::getInstance();
             $req = $db->_dbb->prepare('select *,t_apostilles.id AS idApostille, DATE_FORMAT(date_apostille,"%d-%m-%Y") AS date_apostille,DATE_FORMAT(date_in,"%d-%m-%Y") AS date_in,'
                     . ' DATE_FORMAT(date_out,"%d-%m-%Y") AS date_out from t_apostilles INNER JOIN t_folders ON t_apostilles.ref_id_folders = t_folders.id where ref_id_folders IN '
                     . '(select ref_id_folders from t_link_group_folders where ref_id_group IN '
-                    . '(select ref_id_group from t_link_group_users where ref_id_users = :id_user))');
+                    . '(select ref_id_group from t_link_group_users where ref_id_users = :id_user)) ' . $script_cloture);
             if($req->execute(array("id_user" => $this->login->idUser)) == false){
                 throw new \Exception("la selection n'a pas eu lieu, une erreur est survenue");
             }

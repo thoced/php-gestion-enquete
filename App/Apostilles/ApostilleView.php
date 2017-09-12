@@ -69,7 +69,11 @@ function doneClick(checkedBox,id){
     return true;
 }
 
-function valide_filtre(id){
+function valide_filtre(){
+   
+   // récupération de l'id selectionné sur le select de dossiers
+   var id_folders = document.getElementById("filtre_id_folders").value;
+   var id_cloture = document.getElementById("filtre_cloture").value;
    
     var xhr = new XMLHttpRequest();  
      xhr.onreadystatechange = function(event){
@@ -91,7 +95,7 @@ function valide_filtre(id){
          }
      };
      // xhr.setRequestHeader('Content-Type',  'text/xml');
-     xhr.open("GET", "index.php?target_link=VIEWAPOSTILLES&action=FILTRE&idfolderselected=" + id.value, true);
+     xhr.open("GET", "index.php?target_link=VIEWAPOSTILLES&action=FILTRE&idfolderselected=" + id_folders + "&CLOTURE=" + id_cloture, true);
      xhr.send(null);
 }
 
@@ -201,15 +205,27 @@ function valide_cloture(){
     </div>  
     
     <div class="filtre">
-    
-        Filtre de sélection: <select onchange="valide_filtre(this);" name="filtre_id_folders" id="filtre_id_folders">
-            echo "<option value='-1'>Tous les dossiers</option>
-            <?php 
-                 foreach ($array_folders as $row){
-                     echo "<option value='" . $row['id'] . "'>" . $row['nom'] . "</option>";
-                 }
-            ?>
-        </select>
+        <table width="100%">
+            <tr>
+                <td> Dossiers: <select onchange="valide_filtre();" name="filtre_id_folders" id="filtre_id_folders">
+                    echo "<option value='-1'>Tous les dossiers</option>
+                    <?php 
+                         foreach ($array_folders as $row){
+                             echo "<option value='" . $row['id'] . "'>" . $row['nom'] . "</option>";
+                         }
+                    ?>
+                </select>
+                </td>
+                <td>
+                    Cloturé: <select onchange="valide_filtre();" name="filtre_cloture" id="filtre_cloture">
+                        <option value="ALL">Tous</option>
+                        <option value="INPROGRESS">En cours</option>
+                        <option value="CLOTURED">Cloturé</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+       
         
     </div> 
     <br>
