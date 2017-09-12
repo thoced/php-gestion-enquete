@@ -243,7 +243,6 @@ function valide_cloture(){
             <td>Référence de cloture</td>
             <td>Date OUT</td>
             <td>Cloturé ?</td>
-            <td>Option</td>
         </tr>
         </tr>
         </tr>
@@ -267,7 +266,7 @@ function valide_cloture(){
                . '<td>' . $row['ref_cloture'] . '</td>'
                . '<td>' . $row['date_out'] . '</td>'
                . '<td><input ' . $checked . ' type="checkbox" onclick="return cloture(' . $row['idApostille'] . ');"></input></td>'
-               . '<td>' . '<a class="supprimer" class="supprimer" onclick="return verifDelete();" href="?target_link=VIEWAPOSTILLES&action=DELETE&id=' . $row['idApostille'] . '">Supprimer</a>' . '</td>'
+               //. '<td>' . '<a class="supprimer" class="supprimer" onclick="return verifDelete();" href="?target_link=VIEWAPOSTILLES&action=DELETE&id=' . $row['idApostille'] . '">Supprimer</a>' . '</td>'
                . '</tr>';
         }
     ?>
