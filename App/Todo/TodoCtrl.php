@@ -67,10 +67,10 @@ class TodoCtrl extends BaseController{
                 . ":ref_id_folders)");
         
         $statut = 0;
-        
-        if($req->execute(array("libelle" => $libelle,
-                            "commentaire" => $commentaire,
-                            "date_creation" => $update['date_creation'],
+      
+        if($req->execute(array("libelle" => htmlspecialchars($libelle, ENT_QUOTES),
+                            "commentaire" => htmlspecialchars($commentaire, ENT_QUOTES),
+                            "date_creation" => $update(['date_creation']),
                             "date_rappel" => $date_rappel,
                             "statut"      => $statut,
                             "ref_id_folders" => $setting->getIdFolderSelected())) == false){
