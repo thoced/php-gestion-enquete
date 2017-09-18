@@ -65,6 +65,7 @@
                 <ul>
                     <li><a class="contenu" href="?target_link=VIEWSYNOPSIS"><span class="menu">Suivi de l'enquêtes</span></a></li>
                     <li><a class="contenu" href="?target_link=VIEWTODO"><span class="menu">Planification - Tâches à réaliser</span></a></li> 
+                    <li><a class="contenu" href="?target_link=VIEWOBN"><span class="menu">Rapport - OBN</span></a></li> 
                 </ul>
             </td>
         </tr>
