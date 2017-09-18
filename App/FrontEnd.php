@@ -22,7 +22,6 @@ require_once './App/Setting/SettingModel.php';
 require_once './App/Synopsis/SynopsisCtrl.php';
 require_once './App/Todo/TodoCtrl.php';
 require_once './App/Apostilles/ApostilleCtrl.php';
-require_once './App/Observation/ObnCtrl.php';
 
 use App\DbConnect;
 use App\Login\LoginModel;
@@ -40,7 +39,6 @@ use App\Synopsis\SynopsisCtrl;
 use App\Login\NewUserCtrl;
 use App\Todo\TodoCtrl;
 use App\Apostilles\ApostilleCtrl;
-use App\Observation\ObnCtrl;
 
 
 if(!isset($_SESSION))
@@ -108,10 +106,6 @@ if(isset($_SESSION['LOGIN']))
     {
     switch($target)
       {
-        
-      case "VIEWOBN": new ObnCtrl();
-                      die;
-                      break;
       
       case "VIEWAPOSTILLES":new ApostilleCtrl();
                             die;
