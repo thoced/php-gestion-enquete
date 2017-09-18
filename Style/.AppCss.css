@@ -194,7 +194,9 @@ body{
     z-index: 0;
 }
 
-.list, .listAnnexe, .form, .contenuArea {
+
+
+.list, .listAnnexe, .form, .contenuArea, .listfolder {
   height:35%;
   width:90%;
   overflow:auto;
@@ -209,6 +211,10 @@ body{
  /* background-image:linear-gradient(azure,  ghostwhite );*/
   background-image:linear-gradient( #bcdde0 ,   #97c2c6  );
   z-index:1;
+}
+
+.listfolder{
+    height: 75%;
 }
 
 .contenuArea{

@@ -67,7 +67,7 @@ function valide_filtre(id){
        </div> 
     <br>
     <br>
-<div class="list" id="div_show">
+<div class="listfolder" id="div_show">
 <table width=90%" align="center">
     <tr>
         <td>Num</td>
