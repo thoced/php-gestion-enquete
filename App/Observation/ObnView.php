@@ -49,17 +49,6 @@ function validedelete(){
         }
 }
 
-function verifForm(){
-    var date = document.getElementsByName("date_creation");
-    if(date[0].value.length < 10){
-        alert('Une date de création doit obligatoirement être fournie')
-        return false;
-    }
-    
-    return true;
-    
-}
-
 function valide_hour(input){
     
    var res = input.value.split(":");
@@ -86,10 +75,31 @@ function valide_hour(input){
        input.value = "";
        return false;
    }
+   
+   if(res[0] < 0 || res[0] > 23 || res[1] < 0 || res[1] > 59){
+       alert("L'heure doit être valide  (min : 00:00 et max 23:59)");
+       input.value = "";
+       return false;
+   }
     
     return true;
 }
 
+function verifForm(){
+    var date = document.getElementById("date");
+    var hour = document.getElementById("hour");
+   
+    if(date.value.length == 0){
+        alert("Une date doit être choisie obligatoirement");
+        return false;
+    }
+    
+    if(hour.value.length == 0){
+        alert("Une heure doit être choisie obligatoirement");
+        return false;
+    }
+    return true;
+}
 
 
    </script>
@@ -127,11 +137,11 @@ function valide_hour(input){
                 <table width="90%">
                     <tr>
                         <td>Date:</td>
-                        <td><input class="datepicker" name="date" ></td>
+                        <td><input class="datepicker" name="date" id="date"></td>
                     </tr>
                     <tr>
                         <td>Heure:</td>
-                        <td><input type="text" name="heure" onchange="valide_hour(this);"> <i>(hh:mm)</i></td>
+                        <td><input type="text" name="heure"  onchange="valide_hour(this);" id="hour"> <i>(hh:mm)</i></td>
                     </tr>
                     <tr>
                         <td>Observation:</td>
